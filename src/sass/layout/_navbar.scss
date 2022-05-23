@@ -1,0 +1,200 @@
+.navbar {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+    color: $medium-gray;
+    padding: 35px 0;
+
+    .navbar-logo { margin-right: 75px }
+
+    .navbar-links {
+        width: 100%;
+
+        @media screen and (max-width: 540px) {
+            display: none;
+        }
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        height: 70%; width: 1px;
+        background-color: $light-gray;
+        top: 0px; bottom: 0; left: -4.5vw;
+
+        @media screen and (max-width: 540px) {
+            display: none;
+        }
+    }
+
+    .navbar-links-mobile, .overlay {
+        display: none;
+    }
+
+    .navbar-mobile {
+        display: none;
+
+        & > * { color: black }
+
+        .fa.fa-times {
+            display: none;    
+            padding: 14px 16px;
+            border-radius: 50%;
+            
+            &.spin {
+                transform: rotateZ(360deg);
+                transition: transform .85s;
+            }
+
+            &:hover {
+                color: $very-light-gray;
+                background-color: rgba(26, 29, 35, .6);
+            }
+        }
+
+        .fa.fa-bars {
+            margin-right: 16px;
+        }
+
+        &.change {
+            .fa.fa-times { display: block }
+            .fa.fa-bars { display: none }
+        }
+
+        @media screen and (max-width: 540px) {
+            display: flex;
+        }
+    }
+
+    @media screen and (max-width: 540px) {
+        .overlay {
+            display: flex;
+            transform: translateX(105%);
+            position: absolute;
+            width: 100vw; height: 102vh;
+            left: -9vw; top: 100%;
+            background-color: rgba(26, 29, 35, .75);
+            z-index: 2;
+            transition: .55s;
+            transition-delay: 450ms;
+
+            &.active {
+                transform: translateX(0);
+                transition-delay: 0ms;
+            }
+        }    
+
+        .navbar-links-mobile {
+            position: absolute;
+            display: flex;
+            top: 100%; right: -9vw;
+            width: 91vw;
+            padding: 60px 0 60px 40px;
+            background-color: $very-light-gray;
+            transform: translateY(calc(-100% - 115px));
+            transition: .70s ease-in-out;
+            transition-delay: 450ms;
+            z-index: 5;
+    
+            ul {
+                flex-direction: column;
+                align-items: flex-start;
+                
+                li {
+                    color: $dark-blue;
+                    font-size: 16px;
+                    margin-bottom: 20px;
+                    letter-spacing: 1px;
+                }
+            }
+    
+            &.deployed {
+                transform: translateY(0);
+                transition-delay: 0ms;
+            }
+        }
+    }
+}
+
+.page {
+    position: relative;
+
+    .page-directory {
+        position: absolute;
+        display: flex;
+        top: 0; left: -9vw;
+        width: 9vw;
+        color: $light-gray;
+        transform: translateY(-100%);
+
+        span {
+            display: flex;
+            white-space: nowrap;
+            align-items: center;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 10px;
+            transform: rotate(90deg);
+            transform-origin: left bottom;
+            margin-left: calc(4.5vw - 15px);
+            height: 30px;
+        }
+
+        @media screen and (max-width: 540px) {
+            display: none
+        }
+    }
+}
+
+.page-links-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 300px; 
+    font-weight: 700;
+
+    .page-link {
+        a {
+            position: relative;
+            text-transform: capitalize;
+
+            &:hover {
+                color: $dark-blue;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    left: 10%; bottom: -2px;
+                    height: 1px; width: 80%;
+                    background: $dark-blue;
+
+                    @media screen and (max-width: 540px) {
+                        display: none;
+                    }
+                }
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                left: 50%;
+                width: 0;
+                transition: 0.2s;
+            }
+        }
+
+        &.current a {
+            position: relative;
+            color: $dark-blue;
+            
+            &::after {
+                content: '';
+                position: absolute;
+                left: 10%; bottom: -2px;
+                height: 1px; width: 80%;
+                background: $dark-blue;
+            }
+        }
+    }
+}
