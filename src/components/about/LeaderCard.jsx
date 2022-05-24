@@ -1,7 +1,7 @@
-const LeaderCard = ({ image, name, title }) => (
+const LeaderCard = ({ name, title, image }) => (
     <div className="leader-card">
         <div className="leader-card-image-container">
-            <img className="leader-card-image" src={image} alt={`${name}'s company headshot`} />
+            <img className="leader-card-image" src={image} alt={name} />
             <div className="leader-card-image-overlay">
                 <a href="#">
                     <div className="white" />

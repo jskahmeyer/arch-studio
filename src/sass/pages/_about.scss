@@ -207,7 +207,7 @@
         width: 70%;
 
         .leader-card {
-            .leader-card-avatar-container {
+            .leader-card-image-container {
                 position: relative;
                 display: flex;
                 cursor: pointer;
@@ -217,7 +217,7 @@
                     width: 100%;
                 }
 
-                .leader-card-avatar-overlay {
+                .leader-card-image-overlay {
                     position: absolute;
                     align-items: center;
                     justify-content: center;
@@ -271,7 +271,7 @@
                        filter: brightness(.75);
                     }
 
-                    .leader-card-avatar-overlay {
+                    .leader-card-image-overlay {
                         display: flex;
                     }    
                 }
@@ -291,7 +291,7 @@
     @media screen and (max-width: 850px) {
         flex-direction: column;
 
-        .leaders--heading {
+        .leaders-heading {
             max-width: 100px;
             margin-bottom: 40px;
         }
