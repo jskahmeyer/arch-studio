@@ -1,20 +1,17 @@
-import { useState } from 'react'
 import PortfolioCard from '../components/portfolio/PortfolioCard'
-import data from '../portfolios.json'
+import portfolioItems from '../data/portfolio-items.json'
 
 const Portfolio = () => {
-    const [portfolios] = useState(data)
-
     return (
         <div className="page">
             <div className="page-directory">
                 <span>Portfolio</span>
             </div>
             <div className="portfolios-grid">
-                {portfolios.map((portfolio) => (
+                {portfolioItems.map((item) => (
                     <PortfolioCard 
-                        link={portfolio}
-                        key={portfolio.id}
+                        item={item}
+                        key={item.id}
                     />
                 ))}
             </div>

@@ -1,20 +1,20 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import arrow from '../../assets/images/icons/icon-arrow.svg'
-import data from '../../hero-slides.json'
+import heroSlides from '../../data/hero-slides.json'
 
 const Hero = () => {
     const [current, setCurrent] = useState(0)
           
     const slide = useRef()
 
-    let ids = data.map(i => i.id),
-        backdrops = data.map(i => i.picture),
-        titles = data.map(i => i.title),
-        paragraphs = data.map(i => i.subheading);
+    let ids = heroSlides.map(i => i.id),
+        backdrops = heroSlides.map(i => i.picture),
+        titles = heroSlides.map(i => i.title),
+        paragraphs = heroSlides.map(i => i.subheading)
 
     useEffect(() => {
-        slide.current.classList.add('active-timer');
+        slide.current.classList.add('active-timer')
         
         const timeoutID = setTimeout(() => {
             current < 3
@@ -22,7 +22,7 @@ const Hero = () => {
                 : setCurrent(0)            
 
             slide.current.classList.remove('active-timer')
-            slide.current.classList.remove('active-click');
+            slide.current.classList.remove('active-click')
         }, 6000)
 
         return () => clearTimeout(timeoutID)

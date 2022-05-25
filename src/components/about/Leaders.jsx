@@ -1,5 +1,5 @@
 import LeaderCard from '../about/LeaderCard'
-import leaders from '../../leaders.json'
+import leaders from '../../data/leaders.json'
 
 const Leaders = () => (
     <div className="leaders">
