@@ -6,7 +6,7 @@ import heroSlides from '../../data/hero-slides.json'
 const Hero = () => {
     const [current, setCurrent] = useState(0)
           
-    const slide = useRef()
+    const slideRef = useRef()
 
     let ids = heroSlides.map(i => i.id),
         backdrops = heroSlides.map(i => i.picture),
@@ -14,23 +14,23 @@ const Hero = () => {
         paragraphs = heroSlides.map(i => i.subheading)
 
     useEffect(() => {
-        slide.current.classList.add('active-timer')
+        slideRef.current.classList.add('active-timer')
         
         const timeoutID = setTimeout(() => {
             current < 3
                 ? setCurrent(current + 1)
                 : setCurrent(0)            
 
-            slide.current.classList.remove('active-timer')
-            slide.current.classList.remove('active-click')
+                slideRef.current.classList.remove('active-timer')
+                slideRef.current.classList.remove('active-click')
         }, 6000)
 
         return () => clearTimeout(timeoutID)
     }, [current])
 
     const activeClick = () => {
-        slide.current.classList.remove('active-timer')
-        slide.current.classList.add('active-click')
+        slideRef.current.classList.remove('active-timer')
+        slideRef.current.classList.add('active-click')
     }
 
     return (
@@ -38,7 +38,7 @@ const Hero = () => {
             <div className="homepage-hero-backdrop">
                 <img 
                     src={require('../../assets/images/home/desktop/' + backdrops[current])} 
-                    ref={slide} 
+                    ref={slideRef} 
                     alt={`${titles[current]} porfolio preview`}
                 />
             </div>

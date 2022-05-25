@@ -4,10 +4,10 @@ import greenArrow from '../../assets/images/icons/icon-arrow-green.svg'
 
 const ContactForm = () => {
     const [validForm, setValidForm] = useState(false)
-    let formEl = useRef(null)
+    let formRef = useRef(null)
 
     function isEmpty() {
-        let inputElements = [...formEl.current.children].slice(0, -1)
+        let inputElements = [...formRef.current.children]
 
         inputElements.forEach(input => {
             if (input.children[0].value.trim() === '') {
@@ -26,7 +26,7 @@ const ContactForm = () => {
     }
 
     function isValid() {
-        let email = formEl.current.children[1]
+        let email = formRef.current.children[1]
 
         if (!validateEmail(email.children[0].value.trim()) && email.children[0].value !== '') {
             email.classList.add('invalid')
@@ -48,7 +48,7 @@ const ContactForm = () => {
     }
 
     const checkInputs = (e) => {
-        let inputElements = [...formEl.current.children].slice(0, -1);
+        let inputElements = [...formRef.current.children].slice(0, -1);
 
         e.preventDefault()
         isEmpty()
@@ -57,20 +57,20 @@ const ContactForm = () => {
         if (!inputElements.some(input => input.classList.contains('invalid'))) {
             setValidForm(true)
             setTimeout(() => {
-                formEl.current.reset()
+                formRef.current.reset()
                 setValidForm(false)
             }, 1000)
         }        
     }
 
-    const tryAgain = e => {
+    const tryAgain = (e) => {
         e.target.parentElement.classList.remove('invalid')
     }
     
     return (
         <div className="connect-section">
             <h2 className="connect-section-heading">Connect with us</h2>
-            <form className="connect-section-form" ref={formEl} onSubmit={checkInputs}>
+            <form className="connect-section-form" ref={formRef} onSubmit={checkInputs}>
                 <div className="connect-section-form-control">
                     <input 
                         aria-label="Enter your first and last name here"
