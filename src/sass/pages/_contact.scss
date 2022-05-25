@@ -190,11 +190,11 @@
     .contact-details-map-container {
         display: flex;
         margin: 125px 0;
+    }
 
-        img {
-            max-width: 100%;
-            width: 100%;
-        }
+    .leaflet-container {
+        width: 100%;
+        min-height: 36vw;
     }
 
     @media screen and (max-width: 845px) {

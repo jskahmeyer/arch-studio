@@ -1,10 +1,9 @@
 import useViewport from '../../hooks/useViewport'
 import arrow from '../../assets/images/icons/icon-arrow-dark.svg'
+import LocationsMap from '../contact/LocationsMap'
+
 
 const ContactDetails = () => {
-    let { width } = useViewport()
-    let map = 'image-map.png' 
-
     return (
         <div className="contact-details">
             <hr className="contact-details-line" />
@@ -60,17 +59,7 @@ const ContactDetails = () => {
                 </div>
             </div>
             <div className="contact-details-map-container" id="map">
-                <img 
-                    className="contact-details-map" 
-                    src={
-                        width > 800 
-                            ? require(`../../assets/images/contact/desktop/` + map)
-                                : width > 500
-                                    ? require(`../../assets/images/contact/tablet/` + map)
-                                    : require(`../../assets/images/contact/mobile/` + map)
-                    } 
-                    alt="Map showing locations of Arch Studio offices" 
-                />
+            <LocationsMap/>
             </div>
         </div>
     )
