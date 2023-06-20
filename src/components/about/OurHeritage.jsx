@@ -2,10 +2,10 @@ import heritage from '../../assets/images/about/desktop/image-heritage.jpg'
 
 const OurHeritage = () => (
     <div className="heritage">
-        <div className="heritage-textbox">
-            <hr className="heritage-textbox-line" />
-            <h2 className="heritage-textbox-heading">Our Heritage</h2>
-            <div className="heritage-textbox-subheading">
+        <div className="text-container">
+            <hr className="line" />
+            <h2 className="heading">Our Heritage</h2>
+            <div className="subheading">
                 <p>
                     Founded in 2007, we started as a trio of architects. Our complementary skills and relentless attention to detail turned Arch into one of the most sought after boutique firms in the country.
                 </p>
@@ -18,8 +18,8 @@ const OurHeritage = () => (
                 </p>
             </div>
         </div>
-        <div className="heritage-image-container">
-            <img className="heritage-image" src={heritage} alt="" />   
+        <div className="image-container">
+            <img src={heritage} alt="" />   
         </div>
     </div>
 )

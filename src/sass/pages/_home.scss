@@ -6,14 +6,15 @@
     flex-direction: column;
     margin-bottom: 200px;
 
-    .homepage-hero-backdrop {
+    .backdrop {
         position: absolute;
         top: 0; bottom: 0; left: 0; right: 0;
         z-index: -1;
 
         img {
             filter: brightness(.75);
-            height: 100%; width: 100%;
+            height: 100%; 
+            width: 100%;
 
             &.active-timer, .active-click {
                 animation: flash 1200ms;
@@ -26,7 +27,7 @@
         }  
     }
 
-    .homepage-hero-textbox {
+    .text-container {
         max-width: 55%; height: 350px;
         margin: 150px;
 
@@ -35,7 +36,7 @@
             display: flex;
         }
 
-        .homepage-hero-textbox-heading {
+        .heading {
             font-size: calc(3em + 2.2vw);
             height: 55%;
             align-items: flex-end;
@@ -45,20 +46,22 @@
             }
         }
 
-        .homepage-hero-textbox-subheading {
+        .subheading {
             margin: 20px 0 10px;
             height: 28%;
         } 
     }
 
-    .homepage-hero-pagination {
+    .pagination {
         position: absolute;
-        bottom: 0; left: -60px;
+        bottom: 0; 
+        left: -60px;
 
         .pagination-button {
             background-color: white;
             color: $medium-gray;
-            height: 60px; width: 60px;
+            height: 60px; 
+            width: 60px;
             border: 0;
             font-family: inherit;
             font-weight: 700;
@@ -81,12 +84,12 @@
     }
 
     @media screen and (max-width: 985px) {
-        .homepage-hero-textbox {
+        .text-container {
             max-width: 65%;
             margin: 120px;
         }
 
-        &.homepage-hero-textbox-pagination {
+        &.pagination {
             left: -50px;
 
             .pagination-button {
@@ -98,18 +101,18 @@
     @media screen and (max-width: 755px) {
         margin-bottom: 150px;
         
-        .homepage-hero-textbox {
+        .text-container {
             max-width: 80%;
             display: flex;
             flex-direction: column;
             margin: 80px auto 65px;
             justify-content: center;
 
-            .homepage-hero-textbox-heading, .homepage-hero-textbox-subheading {
+            .heading, .subheading {
                 height: min-content;
             }
 
-            .homepage-hero-textbox-subheading {
+            .subheading {
                 margin: 30px 0;
             }
         }  
@@ -120,7 +123,7 @@
         width: calc(100% + 18vw);
         margin-bottom: 125px;
     
-        .homepage-hero-textbox {
+        .text-container {
             height: 400px;
             margin: 60px auto;
         }
@@ -128,7 +131,7 @@
 }
 
 // Welcome styles
-.welcome-section {
+.welcome {
     display: flex;
     position: relative;
     height: max-content;
@@ -138,7 +141,7 @@
         margin-bottom: 120px;
     }
 
-    .welcome-section-heading {
+    .heading {
         position: absolute;
         transform: translateY(-50%);
         font-weight: 500;
@@ -155,17 +158,17 @@
         }
     }
 
-    .welcome-section-textbox {
+    .text-container {
         display: flex;
         position: relative;
         align-items: center;
         width: 70%; height: min-content;
 
-        .welcome-section-main-content {
+        .content {
             width: 60%;
             margin: 35px auto 0;
         
-            .welcome-section-main-content-subheading {
+            .subheading {
                 margin-bottom: 30px;
 
                 @media screen and (max-width: 1200px) {
@@ -173,7 +176,7 @@
                 }
             }
 
-            .welcome-section-main-content-paragraph {
+            p {
                 margin-bottom: 20px;
                 font-size: 14px;
                 &:last-of-type {
@@ -185,17 +188,17 @@
         @media screen and (max-width: 965px) {
             width: 100%;
 
-            .welcome-section-main-content {
+            .content {
                 width: 100%;
 
-                .welcome-section-main-content-subheading {
+                .subheading {
                     width: 100%;
                 }
             }
         }
     }
 
-    .welcome-section-image-container {
+    .image-container {
         position: absolute;
         z-index: -1;
         width: 30%;
@@ -214,7 +217,7 @@
 }
 
 // SmallTeam styles
-.small-team-section {
+.small-team {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -222,7 +225,7 @@
     padding-left: 15%;
     margin-bottom: 150px;
 
-    .small-team-section-backdrop {
+    .backdrop {
         position: absolute;
         filter: brightness(.6);
         top: 0; bottom: 0; left: 0; right: 0;
@@ -234,9 +237,9 @@
         }
     }
 
-    .small-team-section-textbox {
+    .text-container {
         margin: 120px 0;
-        .small-team-section-textbox-heading {
+        .heading {
             margin-bottom: 40px;
             color: $very-light-gray;
         }
@@ -262,32 +265,33 @@
 .featured-section {
     position: relative;
 
-    .featured-section-heading {
+    .heading {
         font-size: 2.75em;
         font-weight: 500;
     }
 
-    .featured-section-button {
+    .portfolio-link {
         position: absolute;
-        top: 0; right: 0;
+        top: 0; 
+        right: 0;
     }
 
-    .featured-section-portfolios {
+    .portfolio-cards-container {
         display: flex;
         justify-content: space-between;
         margin-top: 50px;
 
-        .featured-section-portfolio {
+        .portfolio-card {
             display: flex;
             position: relative;
             width: calc(96% / 3);
 
-            .featured-section-portfolio-image {
+            .image {
                 width: 100%;
                 filter: brightness(.65);
             }
 
-            .featured-section-portfolio-number {
+            .number {
                 position: absolute;
                 color: $very-light-gray;
                 font-weight: 500;
@@ -297,13 +301,13 @@
                 transition: .25s;
             }
 
-            .featured-section-portfolio-textbox {
+            .text-container {
                 position: absolute;
                 bottom: 7%; left: 20px;
                 color: white;
                 z-index: 2;
 
-                .featured-section-portfolio-textbox-heading {
+                .heading {
                     font-size: 1.2em;
                     font-weight: 700;
                     margin-bottom: 8px;
@@ -311,7 +315,7 @@
             }
 
             &:hover {
-                .featured-section-portfolio-number {
+                .number {
                     opacity: .8;
                 }
             }
@@ -320,7 +324,7 @@
         @media screen and (max-width: 768px) {
             flex-direction: column;
 
-            .featured-section-portfolio {
+            .portfolio-card {
                 width: 100%;
                 margin-bottom: 25px;
 
@@ -328,7 +332,7 @@
                     margin-bottom: 0;
                 }
 
-                .featured-section-portfolio-number {
+                .number {
                     font-size: calc(100px + 10vw);
                 }
             }
@@ -338,9 +342,10 @@
     @media screen and (max-width: 540px) {
         margin-bottom: 220px;
         
-        .featured-section-button {
+        .portfolio-link {
             display: flex;
-            top: 100%; bottom: 0;
+            top: 100%; 
+            bottom: 0;
             width: 100%; 
             transform: translateY(50%);           
             justify-content: center;

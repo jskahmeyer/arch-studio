@@ -35,22 +35,22 @@ const Hero = () => {
 
     return (
         <div className="homepage-hero">
-            <div className="homepage-hero-backdrop">
+            <div className="backdrop">
                 <img 
                     src={require('../../assets/images/home/desktop/' + backdrops[current])} 
                     ref={slideRef} 
                     alt={`${titles[current]} porfolio preview`}
                 />
             </div>
-            <div className="homepage-hero-textbox">
-                <h2 className="homepage-hero-textbox-heading">{titles[current]}</h2>
-                <p className="homepage-hero-textbox-subheading">{paragraphs[current]}</p>
+            <div className="text-container">
+                <h2 className="heading">{titles[current]}</h2>
+                <p className="subheading">{paragraphs[current]}</p>
                 <Link to="/portfolio" className="button">
                     <span>See Our Portfolio</span>
                     <img src={arrow} alt="Arrow to redirect to portfolio" />
                 </Link>
             </div>
-            <div className="homepage-hero-pagination" onClick={activeClick}>
+            <div className="pagination" onClick={activeClick}>
                 {ids.map((id, i) => (
                     <button 
                         className={`pagination-button ${i === current && 'active'}`}

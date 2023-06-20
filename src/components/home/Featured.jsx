@@ -4,12 +4,12 @@ import arrow from '../../assets/images/icons/icon-arrow.svg'
 
 const Featured = () => (
     <div className="featured-section">
-        <h2 className="featured-section-heading">Featured</h2>
-        <Link to="/portfolio" className="button featured-section-button">
+        <h2 className="heading">Featured</h2>
+        <Link to="/portfolio" className="button portfolio-link">
             <span>See all</span>
             <img src={arrow} alt="Arrow linking to portfolios" />
         </Link>
-        <div className="featured-section-portfolios">
+        <div className="portfolio-cards-container">
             <FeaturedPortfolioCards />
         </div>
     </div>

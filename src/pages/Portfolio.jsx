@@ -7,7 +7,7 @@ const Portfolio = () => {
             <div className="page-directory">
                 <span>Portfolio</span>
             </div>
-            <div className="portfolios-grid">
+            <div className="portfolio-cards-grid">
                 {portfolioItems.map((item) => (
                     <PortfolioCard 
                         item={item}

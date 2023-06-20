@@ -1,4 +1,3 @@
-import useViewport from '../../hooks/useViewport'
 import arrow from '../../assets/images/icons/icon-arrow-dark.svg'
 import LocationsMap from '../contact/LocationsMap'
 
@@ -6,60 +5,60 @@ import LocationsMap from '../contact/LocationsMap'
 const ContactDetails = () => {
     return (
         <div className="contact-details">
-            <hr className="contact-details-line" />
-            <div className="contact-details-info">
-                <h2 className="contact-details-info-heading">Contact Details</h2>
-                <div className="contact-details-info-locations">
-                    <div className="contact-details-info-locations-main">
+            <hr className="line" />
+            <div className="info-container">
+                <h2 className="heading">Contact Details</h2>
+                <div className="locations">
+                    <div className="main-office">
                         <address>
-                            <h5 className="office-heading">Main Office</h5>
-                            <ul className="office-info">
-                                <li className="office-info-email">
+                            <h5>Main Office</h5>
+                            <ul>
+                                <li>
                                     <span>Mail:</span>
-                                    <span>archone@mail.com</span>
+                                    <a href="mailto:archone@mail.com">archone@mail.com</a>
                                 </li>
-                                <li className="office-info-address">
+                                <li>
                                     <span>Address:</span>
                                     <span>1892 Chenoweth Drive TN</span>
                                 </li>
-                                <li className="office-info-phone">
+                                <li>
                                     <span>Phone:</span>
-                                    <span>123-456-3451</span>
+                                    <a href="tel:1234563451">123-456-3451</a>
                                 </li>
                             </ul>
                         </address>
-                        <a className="contact-details-info-locations-redirect" href="#map">
+                        <a href="#map">
                             <span>View on Map</span>
-                            <img className="redirect-arrow" src={arrow} alt="" />
+                            <img src={arrow} alt="" />
                         </a>
                     </div>
-                    <div className="contact-details-info-locations-second">
+                    <div className="office-ii">
                         <address>
-                            <h5 className="office-heading">Office II</h5>
-                            <ul className="office-info">
-                                <li className="office-info-email">
+                            <h5>Office II</h5>
+                            <ul>
+                                <li>
                                     <span>Mail:</span>
-                                    <span>archtwo@mail.com</span>
+                                    <a href="mailto:archtwo@mail.com">archtwo@mail.com</a>
                                 </li>
-                                <li className="office-info-address">
+                                <li>
                                     <span>Address:</span>
                                     <span>3399 Wines Lane TX</span>
                                 </li>
-                                <li className="office-info-phone">
+                                <li>
                                     <span>Phone:</span>
-                                    <span>832-123-4321</span>
+                                    <a href="tel:8321234321">832-123-4321</a>
                                 </li>
                             </ul>
                         </address>
-                        <a className="contact-details-info-locations-maplink" href="#map">
+                        <a href="#map">
                             <span>View on Map</span>
-                            <img className="maplink-arrow" src={arrow} alt="" />
+                            <img src={arrow} alt="" />
                         </a>
                     </div>
                 </div>
             </div>
-            <div className="contact-details-map-container" id="map">
-            <LocationsMap/>
+            <div className="map-container" id="map">
+                <LocationsMap/>
             </div>
         </div>
     )

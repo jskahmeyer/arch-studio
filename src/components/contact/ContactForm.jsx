@@ -7,7 +7,7 @@ const ContactForm = () => {
     let formRef = useRef(null)
 
     function isEmpty() {
-        let inputElements = [...formRef.current.children]
+        let inputElements = [...formRef.current.children].slice(0, -1)
 
         inputElements.forEach(input => {
             if (input.children[0].value.trim() === '') {
@@ -42,6 +42,7 @@ const ContactForm = () => {
         }
     
         function validateEmail(email) {
+            // eslint-disable-next-line
             let validEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
             return validEmail.test(String(email).toLowerCase())
         }

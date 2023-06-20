@@ -3,13 +3,13 @@ import smallTeamBackground from '../../assets/images/home/desktop/image-small-te
 import arrow from '../../assets/images/icons/icon-arrow.svg'
 
 const SmallTeam = () => (
-    <div className="small-team-section">
-        <div className="small-team-section-backdrop">
-            <img src={smallTeamBackground} className="small-team-section-backdrop-image" alt="" />
+    <div className="small-team">
+        <div className="backdrop">
+            <img src={smallTeamBackground} alt="" />
         </div>
-        <div className="small-team-section-textbox">
-            <h2 className="small-team-section-textbox-heading">Small team, <br /> big ideas</h2>
-            <Link to="/about" className="button small-team-section-button">
+        <div className="text-container">
+            <h2 className="heading">Small team, <br /> big ideas</h2>
+            <Link to="/about" className="button">
                 <span>About Us</span>
                 <img className="arrow" src={arrow} alt="Arrow to redirect to about page" />
             </Link>

@@ -6,7 +6,7 @@
     height: 125px; width: calc(100% - 100px);
     margin-top: 150px;
 
-    .footer-logo-container {
+    .logo-container {
         background-color: $dark-blue;
         display: flex;
         margin-right: 75px;
@@ -68,7 +68,7 @@
         padding: 0 20px 20px;
         margin-top: 175px;
 
-        .footer-logo-container {
+        .logo-container {
             margin: -55px 0 0 0;
 
             a {

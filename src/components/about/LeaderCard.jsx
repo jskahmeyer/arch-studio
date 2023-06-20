@@ -1,8 +1,8 @@
 const LeaderCard = ({ name, title, image }) => (
     <div className="leader-card">
-        <div className="leader-card-image-container">
-            <img className="leader-card-image" src={image} alt={name} />
-            <div className="leader-card-image-overlay">
+        <div className="image-container">
+            <img className="image" src={image} alt={name} />
+            <div className="image-overlay">
                 <a href="#">
                     <div className="white" />
                     <i className="fab fa-linkedin" aria-label="View this leader on LinkedIn" aria-hidden="true" />
@@ -12,9 +12,9 @@ const LeaderCard = ({ name, title, image }) => (
                 </a>
             </div>
         </div>
-        <div className="leader-card-textbox">
-            <h5 className="leader-card-textbox-name">{name}</h5>
-            <small className="leader-card-textbox-title">{title}</small>
+        <div className="text-container">
+            <h5 className="name">{name}</h5>
+            <small className="title">{title}</small>
         </div>
     </div>
 )

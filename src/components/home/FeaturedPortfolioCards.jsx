@@ -11,8 +11,8 @@ const FeaturedPortfolioCards = () => {
         <>
             {
                 featuredPortfolioItems.map(({ image, number, projectName }) => (
-                    <Link to="/portfolio" className="featured-section-portfolio">
-                        <img className="featured-section-portfolio-image"
+                    <Link to="/portfolio" className="portfolio-card">
+                        <img className="image"
                             src={
                                 width > 768
                                     ? require(`../../assets/images/portfolio/desktop/` + image)
@@ -22,10 +22,10 @@ const FeaturedPortfolioCards = () => {
                             }
                             alt="Thumbnail link to portfolio page"
                         />
-                        <h1 className="featured-section-portfolio-number">{number}</h1>
-                        <div className="featured-section-portfolio-textbox">
-                            <h5 className="featured-section-portfolio-textbox-heading">{projectName}</h5>
-                            <small className="featured-section-portfolio-textbox-subheading">View All Projects</small>
+                        <h1 className="number">{number}</h1>
+                        <div className="text-container">
+                            <h5 className="heading">{projectName}</h5>
+                            <small className="subheading">View All Projects</small>
                         </div>
                     </Link>
                 ))

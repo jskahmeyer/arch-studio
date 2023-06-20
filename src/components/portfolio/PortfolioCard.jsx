@@ -5,9 +5,9 @@ const PortfolioCard = ({ item: { projectName, image, date } }) => {
     const { width } = useViewport()
 
     return (
-        <Link to="#" className="portfolio-thumbnail">
+        <Link to="#" className="image-container">
             <img 
-                className="portfolio-thumbnail-background" 
+                className="background-image" 
                 src={
                     width >= 805 
                         ? require(`../../assets/images/portfolio/desktop/` + image)
@@ -17,9 +17,9 @@ const PortfolioCard = ({ item: { projectName, image, date } }) => {
                 } 
                 alt={`Link to ${projectName} project`}
             />
-            <div className="portfolio-thumbnail-textbox">
-                <h4 className="portfolio-thumbnail-textbox-name">{projectName}</h4>
-                <small className="portfolio-thumbnail-textbox-date">{date}</small>
+            <div className="text-container">
+                <h4>{projectName}</h4>
+                <small>{date}</small>
             </div>
         </Link>
     )

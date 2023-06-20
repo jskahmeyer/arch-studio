@@ -6,9 +6,9 @@ const AboutHero = () => {
 
     return (
         <div className="about-hero">
-            <div className="about-hero-image-container">
+            <div className="image-container">
                 <img 
-                    className="about-hero-image-container-image" 
+                    className="image" 
                     src={
                         width > 540
                             ? require(`../../assets/images/about/desktop/` + image)
@@ -16,14 +16,14 @@ const AboutHero = () => {
                     }  
                     alt="" 
                 />
-                <div className="about-hero-image-container-void" />
+                <div className="void" />
                 <hr className="about-hero-image-container-line" />
             </div>
-            <div className="about-hero-textbox">
-                <h1 className="about-hero-textbox-heading">About</h1>
-                <hr className="about-hero-textbox-line" />
-                <h2 className="about-hero-textbox-subheading">Your team of professionals</h2>
-                <p className="about-hero-textbox-main-content">
+            <div className="text-container">
+                <h1 className="heading">About</h1>
+                <hr className="line" />
+                <h2 className="subheading">Your team of professionals</h2>
+                <p className="content">
                     Our small team of world-class professionals will work with you every step of the way. Strong relationships are at the core of everything we do. This extends to the relationship our projects have with their surroundings.
                 </p>
             </div>

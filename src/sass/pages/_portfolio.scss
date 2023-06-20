@@ -1,20 +1,20 @@
-// PortfolioCard styles
-.portfolios-grid {
+// Portfolio Card styles
+.portfolio-cards-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
 
-    .portfolio-thumbnail {
+    .image-container {
         display: flex;
         position: relative;
 
-        .portfolio-thumbnail-background {
+        .background-image {
             filter: brightness(.75);
             display: flex;
             width: 100%;
         }
 
-        .portfolio-thumbnail-textbox {
+        .text-container {
             position: absolute;
             bottom: 25px; left: 15px;
             color: $very-light-gray;

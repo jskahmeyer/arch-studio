@@ -43,7 +43,7 @@ const Navbar = () => {
             <div className="navbar-links">
                 <PageLinks />
             </div>
-            <a href="#" className="navbar-mobile" ref={mobileNavBtn} aria-label="Button for mobile menu deployment" onClick={() => setMenuOpen(!menuOpen)}>
+            <a href="#" className="navbar-mobile" ref={mobileNavBtn} aria-label="Open menu" onClick={() => setMenuOpen(!menuOpen)}>
                 <i className="fa fa-bars" aria-hidden="true" onClick={mobileNavOpen} />
                 <i className={`fa fa-times ${!menuOpen ? 'spin' : ''}`} aria-hidden="true" onClick={mobileNavClosed}  />
             </a>
