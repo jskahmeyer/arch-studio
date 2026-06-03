@@ -1,17 +1,16 @@
-// Base Styles
-@import 'sass/base/colors';
-@import 'sass/base/global';
-@import 'sass/base/typography';
+// Base
+@use './sass/base/global';
+@use './sass/base/typography';
 
 // Components
-@import 'sass/components/button';
+@use './sass/components/button';
 
 // Layout
-@import 'sass/layout/footer';
-@import 'sass/layout/navbar';
+@use './sass/layout/footer';
+@use './sass/layout/navbar';
 
 // Pages
-@import 'sass/pages/about';
-@import 'sass/pages/contact';
-@import 'sass/pages/home';
-@import 'sass/pages/portfolio';
+@use './sass/pages/about';
+@use './sass/pages/contact';
+@use './sass/pages/home';
+@use './sass/pages/portfolio';

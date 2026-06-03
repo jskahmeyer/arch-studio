@@ -1,5 +1,8 @@
 import useViewport from '../../hooks/useViewport'
 
+const desktopImages = import.meta.glob('../../assets/images/contact/desktop/*.jpg', { eager: true, import: 'default' })
+const mobileImages = import.meta.glob('../../assets/images/contact/mobile/*.jpg', { eager: true, import: 'default' })
+
 const ContactHero = () => {
     const { width } = useViewport()
     let image = 'image-hero.jpg'
@@ -11,8 +14,8 @@ const ContactHero = () => {
                     className="image" 
                     src={
                         width > 540
-                            ? require(`../../assets/images/contact/desktop/` + image)
-                            : require(`../../assets/images/contact/mobile/` + image)
+                            ? desktopImages[`../../assets/images/contact/desktop/${image}`]
+                            : mobileImages[`../../assets/images/contact/mobile/${image}`]
                     } 
                     alt="" 
                 />

@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import arrow from '../../assets/images/icons/icon-arrow.svg'
 import heroSlides from '../../data/hero-slides.json'
 
+const heroImages = import.meta.glob('../../assets/images/home/desktop/*.jpg', { eager: true, import: 'default' })
+
 const Hero = () => {
     const [current, setCurrent] = useState(0)
           
@@ -37,7 +39,7 @@ const Hero = () => {
         <div className="homepage-hero">
             <div className="backdrop">
                 <img 
-                    src={require('../../assets/images/home/desktop/' + backdrops[current])} 
+                    src={heroImages[`../../assets/images/home/desktop/${backdrops[current]}`]}
                     ref={slideRef} 
                     alt={`${titles[current]} porfolio preview`}
                 />

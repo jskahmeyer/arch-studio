@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom'
 import useViewport from '../../hooks/useViewport'
 
+const desktopImages = import.meta.glob('../../assets/images/portfolio/desktop/*.jpg', { eager: true, import: 'default' })
+const tabletImages = import.meta.glob('../../assets/images/portfolio/tablet/*.jpg', { eager: true, import: 'default' })
+const mobileImages = import.meta.glob('../../assets/images/portfolio/mobile/*.jpg', { eager: true, import: 'default' })
+
 const PortfolioCard = ({ item: { projectName, image, date } }) => {
     const { width } = useViewport()
 
@@ -9,11 +13,11 @@ const PortfolioCard = ({ item: { projectName, image, date } }) => {
             <img 
                 className="background-image" 
                 src={
-                    width >= 805 
-                        ? require(`../../assets/images/portfolio/desktop/` + image)
+                    width >= 805
+                        ? desktopImages[`../../assets/images/portfolio/desktop/${image}`]
                             : width >= 500
-                                ? require(`../../assets/images/portfolio/tablet/` + image)
-                                : require(`../../assets/images/portfolio/mobile/` + image)
+                                ? tabletImages[`../../assets/images/portfolio/tablet/${image}`]
+                                : mobileImages[`../../assets/images/portfolio/mobile/${image}`]
                 } 
                 alt={`Link to ${projectName} project`}
             />

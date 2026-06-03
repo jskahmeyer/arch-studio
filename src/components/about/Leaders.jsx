@@ -1,6 +1,8 @@
 import LeaderCard from '../about/LeaderCard'
 import leaders from '../../data/leaders.json'
 
+const avatarImages = import.meta.glob('../../assets/images/about/desktop/*.jpg', { eager: true, import: 'default' })
+
 const Leaders = () => (
     <div className="leaders">
         <h2 className="heading">The Leaders</h2>
@@ -9,7 +11,7 @@ const Leaders = () => (
                 <LeaderCard 
                 name={name}
                 title={title}
-                image={require('../../assets/images/about/desktop/' + image)}
+                image={avatarImages[`../../assets/images/about/desktop/${image}`]}
                 />
             ))}
         </div>
