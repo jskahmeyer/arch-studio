@@ -1,23 +1,23 @@
 import useViewport from '../../hooks/useViewport'
 
-const desktopImages = import.meta.glob('../../assets/images/about/desktop/*.jpg', { eager: true, import: 'default' })
-const mobileImages = import.meta.glob('../../assets/images/about/mobile/*.jpg', { eager: true, import: 'default' })
+const desktopImages = import.meta.glob<string>('../../assets/images/about/desktop/*.jpg', { eager: true, import: 'default' })
+const mobileImages = import.meta.glob<string>('../../assets/images/about/mobile/*.jpg', { eager: true, import: 'default' })
 
 const AboutHero = () => {
-    let { width } = useViewport()
-    let image = 'image-hero.jpg'
+    const { width } = useViewport()
+    const image = 'image-hero.jpg'
 
     return (
         <div className="about-hero">
             <div className="image-container">
-                <img 
-                    className="image" 
+                <img
+                    className="image"
                     src={
                         width > 540
                             ? desktopImages[`../../assets/images/about/desktop/${image}`]
                             : mobileImages[`../../assets/images/about/mobile/${image}`]
-                    }  
-                    alt="" 
+                    }
+                    alt=""
                 />
                 <div className="void" />
                 <hr className="about-hero-image-container-line" />

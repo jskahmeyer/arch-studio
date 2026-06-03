@@ -1,4 +1,10 @@
-const LeaderCard = ({ name, title, image }) => (
+interface LeaderCardProps {
+    name: string
+    title: string
+    image: string
+}
+
+const LeaderCard = ({ name, title, image }: LeaderCardProps) => (
     <div className="leader-card">
         <div className="image-container">
             <img className="image" src={image} alt={name} />

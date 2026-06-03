@@ -1,9 +1,9 @@
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 
 const LocationsMap = () => {
-    const position1 = [36.1627, -86.7816]
-    const position2 = [30.2672, -97.7431]
-    const center = [33.2075, -92.6656]
+    const position1: [number, number] = [36.1627, -86.7816]
+    const position2: [number, number] = [30.2672, -97.7431]
+    const center: [number, number] = [33.2075, -92.6656]
     const zoom = 5
 
     return (
@@ -31,4 +31,3 @@ const LocationsMap = () => {
 }
 
 export default LocationsMap
-

@@ -4,35 +4,35 @@ import PageLinks from '../components/PageLinks'
 import logo from '../assets/images/archLogo.svg'
 
 const Navbar = () => {
-    const [menuOpen, setMenuOpen] = useState(false),
-          mobileNavBtn = useRef(),
-          { body } = document;
+    const [menuOpen, setMenuOpen] = useState(false)
+    const mobileNavBtn = useRef<HTMLAnchorElement>(null)
+    const { body } = document
 
     useEffect(() => {
         hideMobileNav()
     }, [])
 
     const mobileNavOpen = () => {
-        mobileNavBtn.current.classList.add('change');
-        body.style.overflowY = 'hidden';
-        body.parentElement.style.overflowY = 'hidden';
+        mobileNavBtn.current?.classList.add('change')
+        body.style.overflowY = 'hidden'
+        body.parentElement!.style.overflowY = 'hidden'
     }
 
     const mobileNavClosed = () => {
-        setTimeout(function() {
-            mobileNavBtn.current.classList.remove('change')
-        }, 850);
-        body.style.overflowY = 'visible';
-        body.parentElement.style.overflowY = 'visible';
+        setTimeout(() => {
+            mobileNavBtn.current?.classList.remove('change')
+        }, 850)
+        body.style.overflowY = 'visible'
+        body.parentElement!.style.overflowY = 'visible'
     }
 
     const hideMobileNav = () => {
-        let links = [...document.querySelectorAll('.page-link')].slice(3, 6);
+        const links = [...document.querySelectorAll('.page-link')].slice(3, 6)
 
         links.forEach(link => link.addEventListener('click', () => {
             setMenuOpen(false)
-            mobileNavClosed()         
-        }));
+            mobileNavClosed()
+        }))
     }
 
     return (
@@ -45,7 +45,7 @@ const Navbar = () => {
             </div>
             <a href="#" className="navbar-mobile" ref={mobileNavBtn} aria-label="Open menu" onClick={() => setMenuOpen(!menuOpen)}>
                 <i className="fa fa-bars" aria-hidden="true" onClick={mobileNavOpen} />
-                <i className={`fa fa-times ${!menuOpen ? 'spin' : ''}`} aria-hidden="true" onClick={mobileNavClosed}  />
+                <i className={`fa fa-times ${!menuOpen ? 'spin' : ''}`} aria-hidden="true" onClick={mobileNavClosed} />
             </a>
             <div className={`navbar-links-mobile ${menuOpen ? 'deployed' : ''}`} onClick={hideMobileNav}>
                 <PageLinks />
@@ -55,4 +55,4 @@ const Navbar = () => {
     )
 }
 
-export default Navbar;
+export default Navbar
