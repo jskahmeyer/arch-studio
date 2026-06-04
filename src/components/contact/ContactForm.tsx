@@ -81,7 +81,7 @@ const ContactForm = () => {
                         type="text"
                         onFocus={tryAgain}
                     />
-                    <small />
+                    <small role="alert" />
                 </div>
                 <div className="connect-section-form-control">
                     <input
@@ -90,7 +90,7 @@ const ContactForm = () => {
                         type="email"
                         onFocus={tryAgain}
                     />
-                    <small />
+                    <small role="alert" />
                 </div>
                 <div className="connect-section-form-control">
                     <textarea
@@ -98,7 +98,7 @@ const ContactForm = () => {
                         placeholder="Message"
                         onFocus={tryAgain}
                     />
-                    <small />
+                    <small role="alert" />
                 </div>
                 <button className="connect-section-form-button" aria-label="Submit completed form here">
                     <img

@@ -27,7 +27,7 @@ const PortfolioCard = ({ item: { projectName, image, date } }: PortfolioCardProp
                             ? tabletImages[`../../assets/images/portfolio/tablet/${image}`]
                             : mobileImages[`../../assets/images/portfolio/mobile/${image}`]
                 }
-                alt={`Link to ${projectName} project`}
+                alt={projectName}
             />
             <div className="text-container">
                 <h4>{projectName}</h4>

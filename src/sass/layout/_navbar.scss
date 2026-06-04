@@ -182,10 +182,10 @@
             }
         }
 
-        &.current a {
+        a.active {
             position: relative;
             color: $dark-blue;
-            
+
             &::after {
                 content: '';
                 position: absolute;

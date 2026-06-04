@@ -1,3 +1,5 @@
+@use './colors' as *;
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -5,6 +7,12 @@
 
     &:focus {
         outline: 0;
+    }
+
+    &:focus-visible {
+        outline: 2px solid $dark-blue;
+        outline-offset: 3px;
+        border-radius: 2px;
     }
 }
 

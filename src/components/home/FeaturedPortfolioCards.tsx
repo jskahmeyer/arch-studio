@@ -26,7 +26,7 @@ const FeaturedPortfolioCards = () => {
                                     ? tabletImages[`../../assets/images/portfolio/tablet/${image}`]
                                     : mobileImages[`../../assets/images/portfolio/mobile/${image}`]
                         }
-                        alt="Thumbnail link to portfolio page"
+                        alt={projectName}
                     />
                     <h1 className="number">{number}</h1>
                     <div className="text-container">

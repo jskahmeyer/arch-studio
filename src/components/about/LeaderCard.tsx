@@ -9,12 +9,12 @@ const LeaderCard = ({ name, title, image }: LeaderCardProps) => (
         <div className="image-container">
             <img className="image" src={image} alt={name} />
             <div className="image-overlay">
-                <a href="#">
+                <a href="#" aria-label="View on LinkedIn" onClick={e => e.preventDefault()}>
                     <div className="white" />
-                    <i className="fab fa-linkedin" aria-label="View this leader on LinkedIn" aria-hidden="true" />
+                    <i className="fab fa-linkedin" aria-hidden="true" />
                 </a>
-                <a href="#">
-                    <i className="fab fa-twitter" aria-label="View this leader on Twitter" aria-hidden="true" />
+                <a href="#" aria-label="View on Twitter" onClick={e => e.preventDefault()}>
+                    <i className="fab fa-twitter" aria-hidden="true" />
                 </a>
             </div>
         </div>
