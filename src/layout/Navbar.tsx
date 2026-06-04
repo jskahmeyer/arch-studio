@@ -1,53 +1,46 @@
-import { useState, useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import PageLinks from '../components/PageLinks'
 import logo from '../assets/images/archLogo.svg'
+import hamburgerIcon from '../assets/images/icons/icon-hamburger.svg'
+import closeIcon from '../assets/images/icons/icon-close.svg'
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false)
-    const mobileNavBtn = useRef<HTMLAnchorElement>(null)
-    const { body } = document
+    const location = useLocation()
 
     useEffect(() => {
-        hideMobileNav()
-    }, [])
+        setMenuOpen(false)
+    }, [location.pathname])
 
-    const mobileNavOpen = () => {
-        mobileNavBtn.current?.classList.add('change')
-        body.style.overflowY = 'hidden'
-        body.parentElement!.style.overflowY = 'hidden'
-    }
-
-    const mobileNavClosed = () => {
-        setTimeout(() => {
-            mobileNavBtn.current?.classList.remove('change')
-        }, 850)
-        body.style.overflowY = 'visible'
-        body.parentElement!.style.overflowY = 'visible'
-    }
-
-    const hideMobileNav = () => {
-        const links = [...document.querySelectorAll('.page-link')].slice(3, 6)
-
-        links.forEach(link => link.addEventListener('click', () => {
-            setMenuOpen(false)
-            mobileNavClosed()
-        }))
-    }
+    useEffect(() => {
+        const overflow = menuOpen ? 'hidden' : ''
+        document.body.style.overflowY = overflow
+        document.documentElement.style.overflowY = overflow
+        return () => {
+            document.body.style.overflowY = ''
+            document.documentElement.style.overflowY = ''
+        }
+    }, [menuOpen])
 
     return (
         <div className="navbar">
-            <Link to="/" onClick={() => setMenuOpen(false)}>
+            <Link to="/">
                 <img className="navbar-logo" src={logo} alt="Arch company logo" />
             </Link>
             <div className="navbar-links">
                 <PageLinks />
             </div>
-            <a href="#" className="navbar-mobile" ref={mobileNavBtn} aria-label="Open menu" onClick={() => setMenuOpen(!menuOpen)}>
-                <i className="fa fa-bars" aria-hidden="true" onClick={mobileNavOpen} />
-                <i className={`fa fa-times ${!menuOpen ? 'spin' : ''}`} aria-hidden="true" onClick={mobileNavClosed} />
-            </a>
-            <div className={`navbar-links-mobile ${menuOpen ? 'deployed' : ''}`} onClick={hideMobileNav}>
+            <button
+                className={`navbar-mobile ${menuOpen ? 'change' : ''}`}
+                aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+                aria-expanded={menuOpen}
+                onClick={() => setMenuOpen(prev => !prev)}
+            >
+                <img className="icon-menu" src={hamburgerIcon} alt="" />
+                <img className="icon-close" src={closeIcon} alt="" />
+            </button>
+            <div className={`navbar-links-mobile ${menuOpen ? 'deployed' : ''}`}>
                 <PageLinks />
             </div>
             <div className={`overlay ${menuOpen ? 'active' : ''}`} />
