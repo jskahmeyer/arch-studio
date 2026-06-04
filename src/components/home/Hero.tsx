@@ -2,12 +2,22 @@ import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import arrow from '../../assets/images/icons/icon-arrow.svg'
 import heroSlides from '../../data/hero-slides.json'
+import useViewport from '../../hooks/useViewport'
 
-const heroImages = import.meta.glob<string>('../../assets/images/home/desktop/*.jpg', { eager: true, import: 'default' })
+const desktopImages = import.meta.glob<string>('../../assets/images/home/desktop/*.jpg', { eager: true, import: 'default' })
+const tabletImages = import.meta.glob<string>('../../assets/images/home/tablet/*.jpg', { eager: true, import: 'default' })
+const mobileImages = import.meta.glob<string>('../../assets/images/home/mobile/*.jpg', { eager: true, import: 'default' })
 
 const Hero = () => {
     const [current, setCurrent] = useState(0)
     const slideRef = useRef<HTMLImageElement>(null)
+    const { width } = useViewport()
+
+    const getImage = (filename: string) => {
+        if (width <= 540) return mobileImages[`../../assets/images/home/mobile/${filename}`]
+        if (width <= 985) return tabletImages[`../../assets/images/home/tablet/${filename}`]
+        return desktopImages[`../../assets/images/home/desktop/${filename}`]
+    }
 
     const ids = heroSlides.map(i => i.id)
     const backdrops = heroSlides.map(i => i.picture)
@@ -35,7 +45,7 @@ const Hero = () => {
         <div className="homepage-hero">
             <div className="backdrop">
                 <img
-                    src={heroImages[`../../assets/images/home/desktop/${backdrops[current]}`]}
+                    src={getImage(backdrops[current])}
                     ref={slideRef}
                     alt={`${titles[current]} portfolio preview`}
                 />
