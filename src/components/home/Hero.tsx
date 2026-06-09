@@ -8,6 +8,12 @@ const desktopImages = import.meta.glob<string>('../../assets/images/home/desktop
 const tabletImages = import.meta.glob<string>('../../assets/images/home/tablet/*.jpg', { eager: true, import: 'default' })
 const mobileImages = import.meta.glob<string>('../../assets/images/home/mobile/*.jpg', { eager: true, import: 'default' })
 
+const ids = heroSlides.map(i => i.id)
+const backdrops = heroSlides.map(i => i.picture)
+const titles = heroSlides.map(i => i.title)
+const paragraphs = heroSlides.map(i => i.subheading)
+const lastIndex = heroSlides.length - 1
+
 const Hero = () => {
     const [current, setCurrent] = useState(0)
     const { width } = useViewport()
@@ -18,14 +24,9 @@ const Hero = () => {
         return desktopImages[`../../assets/images/home/desktop/${filename}`]
     }
 
-    const ids = heroSlides.map(i => i.id)
-    const backdrops = heroSlides.map(i => i.picture)
-    const titles = heroSlides.map(i => i.title)
-    const paragraphs = heroSlides.map(i => i.subheading)
-
     useEffect(() => {
         const timeoutID = setTimeout(() => {
-            setCurrent(prev => (prev < 3 ? prev + 1 : 0))
+            setCurrent(prev => (prev < lastIndex ? prev + 1 : 0))
         }, 6000)
 
         return () => clearTimeout(timeoutID)
