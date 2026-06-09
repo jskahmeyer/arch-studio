@@ -18,14 +18,14 @@
             height: 100%; 
             width: 100%;
 
-            &.active-timer, .active-click {
+            &.active-timer {
                 animation: flash 1200ms;
 
                 @keyframes flash {
                     0% { opacity: .40 }
                     100% { opacity: 1 }
                 }
-            }               
+            }
         }  
     }
 
@@ -68,7 +68,7 @@
             font-family: inherit;
             font-weight: 700;
             cursor: pointer;
-            transition: .35s;
+            transition: background-color 1200ms, color 1200ms;
 
             &:hover {
                 background-color: $very-light-gray;

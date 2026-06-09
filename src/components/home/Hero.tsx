@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import arrow from '../../assets/images/icons/icon-arrow.svg'
 import heroSlides from '../../data/hero-slides.json'
@@ -10,7 +10,6 @@ const mobileImages = import.meta.glob<string>('../../assets/images/home/mobile/*
 
 const Hero = () => {
     const [current, setCurrent] = useState(0)
-    const slideRef = useRef<HTMLImageElement>(null)
     const { width } = useViewport()
 
     const getImage = (filename: string) => {
@@ -25,28 +24,20 @@ const Hero = () => {
     const paragraphs = heroSlides.map(i => i.subheading)
 
     useEffect(() => {
-        slideRef.current?.classList.add('active-timer')
-
         const timeoutID = setTimeout(() => {
             setCurrent(prev => (prev < 3 ? prev + 1 : 0))
-            slideRef.current?.classList.remove('active-timer')
-            slideRef.current?.classList.remove('active-click')
         }, 6000)
 
         return () => clearTimeout(timeoutID)
     }, [current])
 
-    const activeClick = () => {
-        slideRef.current?.classList.remove('active-timer')
-        slideRef.current?.classList.add('active-click')
-    }
-
     return (
         <div className="homepage-hero">
             <div className="backdrop">
                 <img
+                    key={current}
+                    className="active-timer"
                     src={getImage(backdrops[current])}
-                    ref={slideRef}
                     alt={`${titles[current]} portfolio preview`}
                 />
             </div>
@@ -58,10 +49,10 @@ const Hero = () => {
                     <img src={arrow} alt="Arrow to redirect to portfolio" />
                 </Link>
             </div>
-            <div className="pagination" onClick={activeClick}>
+            <div className="pagination">
                 {ids.map((id, i) => (
                     <button
-                        className={`pagination-button ${i === current && 'active'}`}
+                        className={`pagination-button ${i === current ? 'active' : ''}`}
                         onClick={() => setCurrent(i)}
                         key={i}>
                             {id}
