@@ -23,7 +23,11 @@ const Welcome = () => (
             </div>
         </div>
         <div className="image-container">
-            <img src={skyscraper} alt="" loading="lazy" />
+            <img
+                src={skyscraper}
+                alt="Close-up of a curved, reflective metal building facade with sharp angular panels"
+                loading="lazy"
+            />
         </div>
     </div>
 )

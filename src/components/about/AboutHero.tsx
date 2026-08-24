@@ -23,7 +23,7 @@ const AboutHero = () => {
                             ? desktopImages[`../../assets/images/about/desktop/${image}`]
                             : mobileImages[`../../assets/images/about/mobile/${image}`]
                     }
-                    alt=""
+                    alt="Overhead view of hands typing on a laptop showing architectural blueprints, surrounded by printed floor plans"
                 />
                 <div className="void" />
                 <hr className="about-hero-image-container-line" />

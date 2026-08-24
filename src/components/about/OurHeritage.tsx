@@ -20,7 +20,11 @@ const OurHeritage = () => (
             </div>
         </div>
         <div className="image-container">
-            <img src={heritage} alt="" loading="lazy" />
+            <img
+                src={heritage}
+                alt="Low-angle view of a curved glass office tower facade"
+                loading="lazy"
+            />
         </div>
     </div>
 )

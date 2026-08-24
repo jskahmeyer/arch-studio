@@ -23,7 +23,7 @@ const ContactHero = () => {
                             ? desktopImages[`../../assets/images/contact/desktop/${image}`]
                             : mobileImages[`../../assets/images/contact/mobile/${image}`]
                     }
-                    alt=""
+                    alt="Close-up of a vintage black rotary telephone"
                 />
                 <div className="void" />
                 <hr className="line" />
