@@ -4,6 +4,8 @@
 
 A fictional architecture firm marketing site — a front-end build of the [Frontend Mentor "Architecture agency"](https://www.frontendmentor.io/) challenge, extended with client-side routing, a real contact-form integration, an interactive map, and a responsive, accessible, tested front end.
 
+**[Live demo →](https://stirring-sunflower-af91b8.netlify.app/)**
+
 ## Stack
 
 - [React 19](https://react.dev/) + [React Router v7](https://reactrouter.com/) (`createBrowserRouter` data router)
