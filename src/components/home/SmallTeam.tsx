@@ -5,7 +5,7 @@ import arrow from '../../assets/images/icons/icon-arrow.svg'
 const SmallTeam = () => (
     <div className="small-team">
         <div className="backdrop">
-            <img src={smallTeamBackground} alt="" />
+            <img src={smallTeamBackground} alt="" loading="lazy" />
         </div>
         <div className="text-container">
             <h2 className="heading">Small team, <br /> big ideas</h2>

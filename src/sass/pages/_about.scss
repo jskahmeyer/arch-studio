@@ -241,8 +241,8 @@
                                 z-index: 1;
                             }
                             
-                            &:hover { 
-                                i {
+                            &:hover {
+                                svg {
                                     color: #0e76a8;
                                     position: relative;
                                     z-index: 2;
@@ -252,17 +252,20 @@
                             }
                         }
 
-                        &:nth-child(2) i:hover {
+                        &:nth-child(2) svg:hover {
                             color: #00acee;
                         }
 
-                        i {
-                            font-size: calc(16px + 2vw);
+                        svg {
+                            width: calc(16px + 2vw);
+                            height: calc(16px + 2vw);
+                            fill: currentColor;
                             color: $very-light-gray;
                             transition: .2s;
 
                             @media screen and (max-width: 540px) {
-                                font-size: 30px;
+                                width: 30px;
+                                height: 30px;
                             }
                         }
                     }
@@ -319,7 +322,7 @@
                         transform: translateY(200%);
                         height: min-content;
 
-                        a i {
+                        a svg {
                             color: $dark-blue;
                         }
                     }

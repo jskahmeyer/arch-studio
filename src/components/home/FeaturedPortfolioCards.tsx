@@ -19,6 +19,7 @@ const FeaturedPortfolioCards = () => {
                 <Link to="/portfolio" className="portfolio-card" key={projectName}>
                     <img
                         className="image"
+                        loading="lazy"
                         src={
                             width > 768
                                 ? desktopImages[`../../assets/images/portfolio/desktop/${image}`]

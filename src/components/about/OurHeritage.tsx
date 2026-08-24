@@ -19,7 +19,7 @@ const OurHeritage = () => (
             </div>
         </div>
         <div className="image-container">
-            <img src={heritage} alt="" />   
+            <img src={heritage} alt="" loading="lazy" />
         </div>
     </div>
 )

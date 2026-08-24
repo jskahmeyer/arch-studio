@@ -18,7 +18,7 @@ const Welcome = () => (
             </div>
         </div>
         <div className="image-container">
-            <img src={skyscraper} alt="" />
+            <img src={skyscraper} alt="" loading="lazy" />
         </div>
     </div>
 )
