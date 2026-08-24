@@ -1,109 +1,104 @@
-import { useState, useRef } from 'react'
+import { useState } from 'react'
+import type { FormEvent } from 'react'
 import arrow from '../../assets/images/icons/icon-arrow.svg'
 import greenArrow from '../../assets/images/icons/icon-arrow-green.svg'
 
+type FieldName = 'name' | 'email' | 'message'
+type Errors = Partial<Record<FieldName, string>>
+
+const EMAIL_PATTERN = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+const validate = (data: Record<FieldName, string>): Errors => {
+    const errors: Errors = {}
+
+    if (data.name.trim() === '') errors.name = `Can't be empty`
+    if (data.message.trim() === '') errors.message = `Can't be empty`
+
+    if (data.email.trim() === '') {
+        errors.email = `Can't be empty`
+    } else if (!EMAIL_PATTERN.test(data.email.trim().toLowerCase())) {
+        errors.email = 'Please use a valid email address'
+    }
+
+    return errors
+}
+
 const ContactForm = () => {
-    const [validForm, setValidForm] = useState(false)
-    const formRef = useRef<HTMLFormElement>(null)
+    const [errors, setErrors] = useState<Errors>({})
+    const [submitted, setSubmitted] = useState(false)
 
-    function isEmpty() {
-        if (!formRef.current) return
-        const inputElements = Array.from(formRef.current.children).slice(0, -1) as HTMLElement[]
-
-        inputElements.forEach(input => {
-            const field = input.children[0] as HTMLInputElement | HTMLTextAreaElement
-            if (field.value.trim() === '') {
-                input.classList.add('invalid');
-                (input.children[1] as HTMLElement).innerText = `Can't be empty`
-
-                const timeoutID = setTimeout(() => {
-                    input.classList.remove('invalid')
-                    return () => clearTimeout(timeoutID)
-                }, 10000)
-            } else {
-                input.classList.remove('invalid')
-            }
-        })
-    }
-
-    function isValid() {
-        if (!formRef.current) return
-        const email = formRef.current.children[1] as HTMLElement
-        const emailField = email.children[0] as HTMLInputElement
-
-        function validateEmail(emailStr: string): boolean {
-            const validEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-            return validEmail.test(emailStr.toLowerCase())
-        }
-
-        if (!validateEmail(emailField.value.trim()) && emailField.value !== '') {
-            email.classList.add('invalid');
-            (email.children[1] as HTMLElement).innerText = 'Please use a valid email address'
-
-            const timeoutID = setTimeout(() => {
-                if (emailField.value === '') email.classList.remove('invalid')
-                return () => clearTimeout(timeoutID)
-            }, 10000)
-        } else {
-            isEmpty()
-        }
-    }
-
-    const checkInputs = (e: React.FormEvent<HTMLFormElement>) => {
-        if (!formRef.current) return
-        const inputElements = Array.from(formRef.current.children).slice(0, -1) as HTMLElement[]
-
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        isEmpty()
-        isValid()
+        const form = e.currentTarget
+        const data = {
+            name: (form.elements.namedItem('name') as HTMLInputElement).value,
+            email: (form.elements.namedItem('email') as HTMLInputElement).value,
+            message: (form.elements.namedItem('message') as HTMLTextAreaElement).value,
+        }
 
-        if (!inputElements.some(input => input.classList.contains('invalid'))) {
-            setValidForm(true)
-            setTimeout(() => {
-                formRef.current?.reset()
-                setValidForm(false)
-            }, 1000)
+        const validationErrors = validate(data)
+        setErrors(validationErrors)
+
+        if (Object.keys(validationErrors).length === 0) {
+            setSubmitted(true)
+            form.reset()
+            setTimeout(() => setSubmitted(false), 1000)
         }
     }
 
-    const tryAgain = (e: React.FocusEvent<HTMLElement>) => {
-        e.target.parentElement?.classList.remove('invalid')
+    const clearError = (field: FieldName) => {
+        setErrors(prev => ({ ...prev, [field]: undefined }))
     }
 
     return (
         <div className="connect-section">
             <h2 className="connect-section-heading">Connect with us</h2>
-            <form className="connect-section-form" ref={formRef} onSubmit={checkInputs}>
-                <div className="connect-section-form-control">
+            <form className="connect-section-form" onSubmit={handleSubmit} noValidate>
+                <div className={`connect-section-form-control ${errors.name ? 'invalid' : ''}`}>
+                    <label htmlFor="contact-name" className="sr-only">Name</label>
                     <input
-                        aria-label="Enter your first and last name here"
+                        id="contact-name"
+                        name="name"
                         placeholder="Name"
                         type="text"
-                        onFocus={tryAgain}
+                        required
+                        aria-invalid={Boolean(errors.name)}
+                        aria-describedby="contact-name-error"
+                        onFocus={() => clearError('name')}
                     />
-                    <small role="alert" />
+                    <small id="contact-name-error" role="alert">{errors.name}</small>
                 </div>
-                <div className="connect-section-form-control">
+                <div className={`connect-section-form-control ${errors.email ? 'invalid' : ''}`}>
+                    <label htmlFor="contact-email" className="sr-only">Email</label>
                     <input
-                        aria-label="Enter your email address here"
+                        id="contact-email"
+                        name="email"
                         placeholder="Email"
                         type="email"
-                        onFocus={tryAgain}
+                        required
+                        aria-invalid={Boolean(errors.email)}
+                        aria-describedby="contact-email-error"
+                        onFocus={() => clearError('email')}
                     />
-                    <small role="alert" />
+                    <small id="contact-email-error" role="alert">{errors.email}</small>
                 </div>
-                <div className="connect-section-form-control">
+                <div className={`connect-section-form-control ${errors.message ? 'invalid' : ''}`}>
+                    <label htmlFor="contact-message" className="sr-only">Message</label>
                     <textarea
-                        aria-label="Enter your message here"
+                        id="contact-message"
+                        name="message"
                         placeholder="Message"
-                        onFocus={tryAgain}
+                        required
+                        aria-invalid={Boolean(errors.message)}
+                        aria-describedby="contact-message-error"
+                        onFocus={() => clearError('message')}
                     />
-                    <small role="alert" />
+                    <small id="contact-message-error" role="alert">{errors.message}</small>
                 </div>
                 <button className="connect-section-form-button" aria-label="Submit completed form here">
                     <img
-                        className={`connect-section-form-button-arrow ${validForm && 'active'}`}
-                        src={validForm ? greenArrow : arrow}
+                        className={`connect-section-form-button-arrow ${submitted ? 'active' : ''}`}
+                        src={submitted ? greenArrow : arrow}
                         alt=""
                     />
                 </button>
