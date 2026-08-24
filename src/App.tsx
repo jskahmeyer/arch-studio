@@ -5,8 +5,11 @@ import './App.scss'
 
 const App = () => (
   <div className="App">
+    <a href="#main-content" className="skip-link">Skip to content</a>
     <Navbar />
-    <Outlet />
+    <main id="main-content">
+      <Outlet />
+    </main>
     <Footer />
     <ScrollRestoration />
   </div>
