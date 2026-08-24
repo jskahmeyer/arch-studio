@@ -17,7 +17,7 @@ describe('Hero', () => {
     it('renders the first slide heading by default', () => {
         renderHero()
 
-        expect(screen.getByRole('heading', { name: heroSlides[0].title })).toBeInTheDocument()
+        expect(screen.getByRole('heading', { name: heroSlides[0]!.title })).toBeInTheDocument()
     })
 
     it('has no accessibility violations', async () => {
@@ -30,9 +30,9 @@ describe('Hero', () => {
         const user = userEvent.setup()
         renderHero()
 
-        await user.click(screen.getByRole('button', { name: String(heroSlides[2].id) }))
+        await user.click(screen.getByRole('button', { name: String(heroSlides[2]!.id) }))
 
-        expect(screen.getByRole('heading', { name: heroSlides[2].title })).toBeInTheDocument()
+        expect(screen.getByRole('heading', { name: heroSlides[2]!.title })).toBeInTheDocument()
     })
 
     it('auto-advances to the next slide after the timeout elapses', () => {
@@ -43,7 +43,7 @@ describe('Hero', () => {
             vi.advanceTimersByTime(6000)
         })
 
-        expect(screen.getByRole('heading', { name: heroSlides[1].title })).toBeInTheDocument()
+        expect(screen.getByRole('heading', { name: heroSlides[1]!.title })).toBeInTheDocument()
         vi.useRealTimers()
     })
 
@@ -57,14 +57,14 @@ describe('Hero', () => {
         act(() => {
             vi.advanceTimersByTime(10000)
         })
-        expect(screen.getByRole('heading', { name: heroSlides[0].title })).toBeInTheDocument()
+        expect(screen.getByRole('heading', { name: heroSlides[0]!.title })).toBeInTheDocument()
 
         await user.click(screen.getByRole('button', { name: 'Play slideshow' }))
 
         act(() => {
             vi.advanceTimersByTime(6000)
         })
-        expect(screen.getByRole('heading', { name: heroSlides[1].title })).toBeInTheDocument()
+        expect(screen.getByRole('heading', { name: heroSlides[1]!.title })).toBeInTheDocument()
 
         vi.useRealTimers()
     })

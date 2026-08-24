@@ -1,4 +1,5 @@
 import useViewport from '../../hooks/useViewport'
+import { resolveAsset } from '../../utils/resolveAsset'
 
 const desktopImages = import.meta.glob<string>('../../assets/images/about/desktop/*.webp', {
     eager: true,
@@ -20,8 +21,14 @@ const AboutHero = () => {
                     className="image"
                     src={
                         width > 540
-                            ? desktopImages[`../../assets/images/about/desktop/${image}`]
-                            : mobileImages[`../../assets/images/about/mobile/${image}`]
+                            ? resolveAsset(
+                                  desktopImages,
+                                  `../../assets/images/about/desktop/${image}`,
+                              )
+                            : resolveAsset(
+                                  mobileImages,
+                                  `../../assets/images/about/mobile/${image}`,
+                              )
                     }
                     alt="Overhead view of hands typing on a laptop showing architectural blueprints, surrounded by printed floor plans"
                 />

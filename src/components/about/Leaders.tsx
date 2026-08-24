@@ -1,5 +1,6 @@
 import LeaderCard from '../about/LeaderCard'
 import leaders from '../../data/leaders.json'
+import { resolveAsset } from '../../utils/resolveAsset'
 
 const avatarImages = import.meta.glob<string>('../../assets/images/about/desktop/*.webp', {
     eager: true,
@@ -15,7 +16,7 @@ const Leaders = () => (
                     key={id}
                     name={name}
                     title={title}
-                    image={avatarImages[`../../assets/images/about/desktop/${image}`]}
+                    image={resolveAsset(avatarImages, `../../assets/images/about/desktop/${image}`)}
                 />
             ))}
         </div>

@@ -21,7 +21,6 @@ const Footer = () => {
                 <ArrowLink
                     to="/portfolio"
                     label="See Our Portfolio"
-                    arrowAlt="Arrow to redirect to portfolio"
                     className="footer-button"
                     arrowClassName="footer-button-arrow"
                 />

@@ -3,6 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "description": "A fictional architecture firm marketing site, built with React 19, Vite, and TypeScript.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jskahmeyer/arch-studio.git"
+  },
+  "engines": {
+    "node": ">=22"
+  },
   "dependencies": {
     "leaflet": "^1.9.4",
     "react": "^19.2.7",

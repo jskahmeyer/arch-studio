@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import ArrowLink from '../shared/ArrowLink'
 import heroSlides from '../../data/hero-slides.json'
 import useViewport from '../../hooks/useViewport'
+import { resolveAsset } from '../../utils/resolveAsset'
 
 const desktopImages = import.meta.glob<string>('../../assets/images/home/desktop/*.webp', {
     eager: true,
@@ -16,10 +17,6 @@ const mobileImages = import.meta.glob<string>('../../assets/images/home/mobile/*
     import: 'default',
 })
 
-const ids = heroSlides.map((i) => i.id)
-const backdrops = heroSlides.map((i) => i.picture)
-const titles = heroSlides.map((i) => i.title)
-const paragraphs = heroSlides.map((i) => i.subheading)
 const lastIndex = heroSlides.length - 1
 
 const Hero = () => {
@@ -29,10 +26,15 @@ const Hero = () => {
     )
     const { width } = useViewport()
 
+    // `current` is always kept within [0, lastIndex] by the state transitions below.
+    const slide = heroSlides[current]!
+
     const getImage = (filename: string) => {
-        if (width <= 540) return mobileImages[`../../assets/images/home/mobile/${filename}`]
-        if (width <= 985) return tabletImages[`../../assets/images/home/tablet/${filename}`]
-        return desktopImages[`../../assets/images/home/desktop/${filename}`]
+        if (width <= 540)
+            return resolveAsset(mobileImages, `../../assets/images/home/mobile/${filename}`)
+        if (width <= 985)
+            return resolveAsset(tabletImages, `../../assets/images/home/tablet/${filename}`)
+        return resolveAsset(desktopImages, `../../assets/images/home/desktop/${filename}`)
     }
 
     useEffect(() => {
@@ -51,27 +53,23 @@ const Hero = () => {
                 <img
                     key={current}
                     className="active-timer"
-                    src={getImage(backdrops[current])}
-                    alt={`${titles[current]} portfolio preview`}
+                    src={getImage(slide.picture)}
+                    alt={`${slide.title} portfolio preview`}
                 />
             </div>
             <div className="text-container">
-                <h2 className="heading">{titles[current]}</h2>
-                <p className="subheading">{paragraphs[current]}</p>
-                <ArrowLink
-                    to="/portfolio"
-                    label="See Our Portfolio"
-                    arrowAlt="Arrow to redirect to portfolio"
-                />
+                <h2 className="heading">{slide.title}</h2>
+                <p className="subheading">{slide.subheading}</p>
+                <ArrowLink to="/portfolio" label="See Our Portfolio" />
             </div>
             <div className="pagination">
-                {ids.map((id, i) => (
+                {heroSlides.map((s, i) => (
                     <button
                         className={`pagination-button ${i === current ? 'active' : ''}`}
                         onClick={() => setCurrent(i)}
                         key={i}
                     >
-                        {id}
+                        {s.id}
                     </button>
                 ))}
                 <button

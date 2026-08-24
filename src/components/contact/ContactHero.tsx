@@ -1,4 +1,5 @@
 import useViewport from '../../hooks/useViewport'
+import { resolveAsset } from '../../utils/resolveAsset'
 
 const desktopImages = import.meta.glob<string>('../../assets/images/contact/desktop/*.webp', {
     eager: true,
@@ -20,8 +21,14 @@ const ContactHero = () => {
                     className="image"
                     src={
                         width > 540
-                            ? desktopImages[`../../assets/images/contact/desktop/${image}`]
-                            : mobileImages[`../../assets/images/contact/mobile/${image}`]
+                            ? resolveAsset(
+                                  desktopImages,
+                                  `../../assets/images/contact/desktop/${image}`,
+                              )
+                            : resolveAsset(
+                                  mobileImages,
+                                  `../../assets/images/contact/mobile/${image}`,
+                              )
                     }
                     alt="Close-up of a vintage black rotary telephone"
                 />

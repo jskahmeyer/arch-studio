@@ -1,4 +1,5 @@
 import useViewport from '../../hooks/useViewport'
+import { resolveAsset } from '../../utils/resolveAsset'
 
 const desktopImages = import.meta.glob<string>('../../assets/images/portfolio/desktop/*.webp', {
     eager: true,
@@ -30,10 +31,19 @@ const PortfolioCard = ({ item: { projectName, image, date } }: PortfolioCardProp
                 className="background-image"
                 src={
                     width >= 805
-                        ? desktopImages[`../../assets/images/portfolio/desktop/${image}`]
+                        ? resolveAsset(
+                              desktopImages,
+                              `../../assets/images/portfolio/desktop/${image}`,
+                          )
                         : width >= 500
-                          ? tabletImages[`../../assets/images/portfolio/tablet/${image}`]
-                          : mobileImages[`../../assets/images/portfolio/mobile/${image}`]
+                          ? resolveAsset(
+                                tabletImages,
+                                `../../assets/images/portfolio/tablet/${image}`,
+                            )
+                          : resolveAsset(
+                                mobileImages,
+                                `../../assets/images/portfolio/mobile/${image}`,
+                            )
                 }
                 alt={projectName}
                 loading="lazy"

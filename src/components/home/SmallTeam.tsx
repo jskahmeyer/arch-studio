@@ -10,12 +10,7 @@ const SmallTeam = () => (
             <h2 className="heading">
                 Small team, <br /> big ideas
             </h2>
-            <ArrowLink
-                to="/about"
-                label="About Us"
-                arrowAlt="Arrow to redirect to about page"
-                arrowClassName="arrow"
-            />
+            <ArrowLink to="/about" label="About Us" arrowClassName="arrow" />
         </div>
     </div>
 )

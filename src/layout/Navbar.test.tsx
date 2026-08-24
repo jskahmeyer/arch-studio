@@ -27,7 +27,7 @@ describe('Navbar', () => {
         await user.click(screen.getByRole('button', { name: 'Open menu' }))
         expect(screen.getByRole('button', { name: 'Close menu' })).toBeInTheDocument()
 
-        const [mobilePortfolioLink] = screen.getAllByRole('link', { name: 'portfolio' })
+        const mobilePortfolioLink = screen.getAllByRole('link', { name: 'portfolio' })[0]!
         await user.click(mobilePortfolioLink)
 
         expect(screen.getByRole('button', { name: 'Open menu' })).toBeInTheDocument()

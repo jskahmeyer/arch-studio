@@ -36,7 +36,8 @@ A pre-commit hook (husky + lint-staged) runs eslint/prettier on staged files and
 
 ## Testing & quality
 
-- **[Vitest](https://vitest.dev/) + [React Testing Library](https://testing-library.com/react)** for component/hook tests — 20 tests covering component behavior (Hero slide rotation/pause, Navbar mobile-menu-closes-on-navigation, PageLinks routing), the `useViewport` hook, and `ContactForm`'s validation, focus-clearing, and real Formspree submit/success/error paths (with `fetch` mocked).
+- **[Vitest](https://vitest.dev/) + [React Testing Library](https://testing-library.com/react)** — 34 tests across 10 files, covering behavior with real branching logic or shared-across-many-callers risk: `Hero` (slide rotation, pause/resume, reduced-motion default), `Navbar` (mobile menu closes on navigation, backdrop click, and Escape — with focus returned to the toggle button), `ContactForm` (validation, focus-clearing, real Formspree submit/success/error paths with `fetch` mocked), `Footer` (hides its own CTA on the page it points to), `ArrowLink` and `PageLinks` (the two components reused across most pages), `PortfolioCard` (resolves the correct responsive image per breakpoint), `RouteError` (both thrown-error and thrown-`Response` shapes), `resolveAsset`, and `useViewport`.
+- **Not every component has a test, deliberately.** Purely presentational components with no branching logic (`LeaderCard`, `Page`, the page-level route components) would only yield "renders what you pass it" tests — coverage without much signal. The bar here was "does this have real logic, or would a regression here be costly," not maximizing a coverage percentage.
 - **[jest-axe](https://github.com/NickColley/jest-axe)** runs an automated accessibility check (`axe-core` under the hood) against every interactive component's rendered output, including `ContactForm` in both its default and post-validation-error states. (Chosen over `vitest-axe`, which hasn't published in over a year and pins an outdated peer dependency against this project's Vitest version.)
 - **ESLint** (flat config) with `typescript-eslint`, `eslint-plugin-react-hooks`, `eslint-plugin-jsx-a11y`, and `eslint-config-prettier`.
 - **Prettier**, configured to match this codebase's existing conventions (4-space indent, single quotes, no semicolons) rather than Prettier's defaults.
@@ -64,6 +65,7 @@ src/
   data/         # static JSON content (hero slides, portfolio items, leaders)
   sass/         # base styles, components, and per-page partials, imported via App.scss
   assets/       # images (WebP) and icons, organized by page and breakpoint
+  utils/        # small shared utilities (e.g. resolveAsset)
   router.tsx    # createBrowserRouter route table
   setupTests.ts # Vitest setup (jest-dom, jest-axe, matchMedia stub)
 ```
@@ -81,7 +83,7 @@ A few choices worth explaining rather than leaving implicit:
 - **WebP images, no `<picture>`/JPG fallback.** WebP has had near-universal browser support for years now. Maintaining two image formats plus fallback markup across the six components that render responsive images would have been complexity with no real payoff. Converting cut total image payload by 44% (3.18MB → 1.76MB) with no visible quality loss.
 - **Local inline SVGs instead of the Font Awesome CDN kit.** Two social icons were pulling in an entire external icon-kit script (which also swaps icons in via JS after load, causing a layout shift). Replaced with inline SVGs matching the rest of the site's local-icon convention — one less third-party script, no more shift.
 - **`jest-axe` over `vitest-axe`** — see Testing & quality above.
-- **Pre-commit runs the full test suite, not just lint-staged.** Unlike lint-staged (which only touches staged files and stays fast regardless of repo size), a full `vitest run` doesn't scale the same way — but at 20 tests and ~1.5s, the cost is negligible today. Worth revisiting as a pre-push hook instead if the suite grows enough to make every commit noticeably slower.
+- **Pre-commit runs the full test suite, not just lint-staged.** Unlike lint-staged (which only touches staged files and stays fast regardless of repo size), a full `vitest run` doesn't scale the same way — but at 34 tests and ~2s, the cost is negligible today. Worth revisiting as a pre-push hook instead if the suite grows enough to make every commit noticeably slower.
 
 ## Notes
 

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import useViewport from '../../hooks/useViewport'
 import portfolioItems from '../../data/portfolio-items.json'
+import { resolveAsset } from '../../utils/resolveAsset'
 
 const desktopImages = import.meta.glob<string>('../../assets/images/portfolio/desktop/*.webp', {
     eager: true,
@@ -31,10 +32,19 @@ const FeaturedPortfolioCards = () => {
                         loading="lazy"
                         src={
                             width > 768
-                                ? desktopImages[`../../assets/images/portfolio/desktop/${image}`]
+                                ? resolveAsset(
+                                      desktopImages,
+                                      `../../assets/images/portfolio/desktop/${image}`,
+                                  )
                                 : width > 500
-                                  ? tabletImages[`../../assets/images/portfolio/tablet/${image}`]
-                                  : mobileImages[`../../assets/images/portfolio/mobile/${image}`]
+                                  ? resolveAsset(
+                                        tabletImages,
+                                        `../../assets/images/portfolio/tablet/${image}`,
+                                    )
+                                  : resolveAsset(
+                                        mobileImages,
+                                        `../../assets/images/portfolio/mobile/${image}`,
+                                    )
                         }
                         alt={projectName}
                     />
