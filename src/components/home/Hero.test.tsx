@@ -2,6 +2,7 @@ import { render, screen, act } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { MemoryRouter } from 'react-router-dom'
 import { describe, it, expect, vi } from 'vitest'
+import { axe } from 'jest-axe'
 import Hero from './Hero'
 import heroSlides from '../../data/hero-slides.json'
 
@@ -17,6 +18,12 @@ describe('Hero', () => {
         renderHero()
 
         expect(screen.getByRole('heading', { name: heroSlides[0].title })).toBeInTheDocument()
+    })
+
+    it('has no accessibility violations', async () => {
+        const { container } = renderHero()
+
+        expect(await axe(container)).toHaveNoViolations()
     })
 
     it('switches slides when a pagination button is clicked', async () => {

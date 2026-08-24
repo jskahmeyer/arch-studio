@@ -1,9 +1,20 @@
 import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import { describe, it, expect } from 'vitest'
+import { axe } from 'jest-axe'
 import PageLinks from './PageLinks'
 
 describe('PageLinks', () => {
+    it('has no accessibility violations', async () => {
+        const { container } = render(
+            <MemoryRouter>
+                <PageLinks />
+            </MemoryRouter>,
+        )
+
+        expect(await axe(container)).toHaveNoViolations()
+    })
+
     it('renders a link to each page with the expected label and destination', () => {
         render(
             <MemoryRouter>

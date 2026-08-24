@@ -5,6 +5,9 @@ import greenArrow from '../../assets/images/icons/icon-arrow-green.svg'
 
 type FieldName = 'name' | 'email' | 'message'
 type Errors = Partial<Record<FieldName, string>>
+type FormStatus = 'idle' | 'submitting' | 'success' | 'error'
+
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xqpzveek'
 
 const EMAIL_PATTERN =
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -26,9 +29,9 @@ const validate = (data: Record<FieldName, string>): Errors => {
 
 const ContactForm = () => {
     const [errors, setErrors] = useState<Errors>({})
-    const [submitted, setSubmitted] = useState(false)
+    const [status, setStatus] = useState<FormStatus>('idle')
 
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         const form = e.currentTarget
         const data = {
@@ -40,15 +43,32 @@ const ContactForm = () => {
         const validationErrors = validate(data)
         setErrors(validationErrors)
 
-        if (Object.keys(validationErrors).length === 0) {
-            setSubmitted(true)
+        if (Object.keys(validationErrors).length > 0) return
+
+        setStatus('submitting')
+
+        try {
+            const response = await fetch(FORMSPREE_ENDPOINT, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Accept: 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+
+            if (!response.ok) throw new Error('Formspree request failed')
+
             form.reset()
-            setTimeout(() => setSubmitted(false), 1000)
+            setStatus('success')
+        } catch {
+            setStatus('error')
         }
     }
 
-    const clearError = (field: FieldName) => {
+    const resetFieldFeedback = (field: FieldName) => {
         setErrors((prev) => ({ ...prev, [field]: undefined }))
+        setStatus((prev) => (prev === 'submitting' ? prev : 'idle'))
     }
 
     return (
@@ -67,7 +87,7 @@ const ContactForm = () => {
                         required
                         aria-invalid={Boolean(errors.name)}
                         aria-describedby="contact-name-error"
-                        onFocus={() => clearError('name')}
+                        onFocus={() => resetFieldFeedback('name')}
                     />
                     <small id="contact-name-error" role="alert">
                         {errors.name}
@@ -85,7 +105,7 @@ const ContactForm = () => {
                         required
                         aria-invalid={Boolean(errors.email)}
                         aria-describedby="contact-email-error"
-                        onFocus={() => clearError('email')}
+                        onFocus={() => resetFieldFeedback('email')}
                     />
                     <small id="contact-email-error" role="alert">
                         {errors.email}
@@ -102,19 +122,32 @@ const ContactForm = () => {
                         required
                         aria-invalid={Boolean(errors.message)}
                         aria-describedby="contact-message-error"
-                        onFocus={() => clearError('message')}
+                        onFocus={() => resetFieldFeedback('message')}
                     />
                     <small id="contact-message-error" role="alert">
                         {errors.message}
                     </small>
                 </div>
+                {(status === 'success' || status === 'error') && (
+                    <p
+                        className={`connect-section-form-status ${status === 'error' ? 'error' : ''}`}
+                        role="status"
+                    >
+                        {status === 'success'
+                            ? 'Thanks! Your message has been sent.'
+                            : 'Something went wrong. Please try again, or email us directly.'}
+                    </p>
+                )}
                 <button
                     className="connect-section-form-button"
-                    aria-label="Submit completed form here"
+                    aria-label={
+                        status === 'submitting' ? 'Sending message…' : 'Submit completed form here'
+                    }
+                    disabled={status === 'submitting'}
                 >
                     <img
-                        className={`connect-section-form-button-arrow ${submitted ? 'active' : ''}`}
-                        src={submitted ? greenArrow : arrow}
+                        className={`connect-section-form-button-arrow ${status === 'success' ? 'active' : ''}`}
+                        src={status === 'success' ? greenArrow : arrow}
                         alt=""
                     />
                 </button>

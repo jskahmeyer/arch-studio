@@ -40,4 +40,4 @@ Responsive images are picked up per-breakpoint via `import.meta.glob` rather tha
 ## Notes
 
 - The Leaflet default marker icon is re-pointed at the bundled image assets in `src/components/contact/LocationsMap.tsx`, working around a [known issue](https://github.com/Leaflet/Leaflet/issues/4968) where Leaflet's icon URL resolution breaks under bundlers.
-- No backend — the contact form validates client-side only and does not submit anywhere.
+- No backend — the contact form submits directly to [Formspree](https://formspree.io/) via `fetch`, with real loading/success/error states.
