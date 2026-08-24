@@ -1,7 +1,10 @@
 import LeaderCard from '../about/LeaderCard'
 import leaders from '../../data/leaders.json'
 
-const avatarImages = import.meta.glob<string>('../../assets/images/about/desktop/*.jpg', { eager: true, import: 'default' })
+const avatarImages = import.meta.glob<string>('../../assets/images/about/desktop/*.jpg', {
+    eager: true,
+    import: 'default',
+})
 
 const Leaders = () => (
     <div className="leaders">

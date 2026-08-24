@@ -30,14 +30,22 @@ const LocationsMap = () => {
             <Marker position={position1}>
                 <Popup>
                     <address>
-                        Arch Studio - Nashville<br />1892 Chenoweth Dr<br />Nashville, TN
+                        Arch Studio - Nashville
+                        <br />
+                        1892 Chenoweth Dr
+                        <br />
+                        Nashville, TN
                     </address>
                 </Popup>
             </Marker>
             <Marker position={position2}>
                 <Popup>
                     <address>
-                        Arch Studio - Austin<br />3399 Wines Lane<br />Austin, TX
+                        Arch Studio - Austin
+                        <br />
+                        3399 Wines Lane
+                        <br />
+                        Austin, TX
                     </address>
                 </Popup>
             </Marker>

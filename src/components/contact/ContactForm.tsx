@@ -6,7 +6,8 @@ import greenArrow from '../../assets/images/icons/icon-arrow-green.svg'
 type FieldName = 'name' | 'email' | 'message'
 type Errors = Partial<Record<FieldName, string>>
 
-const EMAIL_PATTERN = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+const EMAIL_PATTERN =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
 const validate = (data: Record<FieldName, string>): Errors => {
     const errors: Errors = {}
@@ -47,7 +48,7 @@ const ContactForm = () => {
     }
 
     const clearError = (field: FieldName) => {
-        setErrors(prev => ({ ...prev, [field]: undefined }))
+        setErrors((prev) => ({ ...prev, [field]: undefined }))
     }
 
     return (
@@ -55,7 +56,9 @@ const ContactForm = () => {
             <h2 className="connect-section-heading">Connect with us</h2>
             <form className="connect-section-form" onSubmit={handleSubmit} noValidate>
                 <div className={`connect-section-form-control ${errors.name ? 'invalid' : ''}`}>
-                    <label htmlFor="contact-name" className="sr-only">Name</label>
+                    <label htmlFor="contact-name" className="sr-only">
+                        Name
+                    </label>
                     <input
                         id="contact-name"
                         name="name"
@@ -66,10 +69,14 @@ const ContactForm = () => {
                         aria-describedby="contact-name-error"
                         onFocus={() => clearError('name')}
                     />
-                    <small id="contact-name-error" role="alert">{errors.name}</small>
+                    <small id="contact-name-error" role="alert">
+                        {errors.name}
+                    </small>
                 </div>
                 <div className={`connect-section-form-control ${errors.email ? 'invalid' : ''}`}>
-                    <label htmlFor="contact-email" className="sr-only">Email</label>
+                    <label htmlFor="contact-email" className="sr-only">
+                        Email
+                    </label>
                     <input
                         id="contact-email"
                         name="email"
@@ -80,10 +87,14 @@ const ContactForm = () => {
                         aria-describedby="contact-email-error"
                         onFocus={() => clearError('email')}
                     />
-                    <small id="contact-email-error" role="alert">{errors.email}</small>
+                    <small id="contact-email-error" role="alert">
+                        {errors.email}
+                    </small>
                 </div>
                 <div className={`connect-section-form-control ${errors.message ? 'invalid' : ''}`}>
-                    <label htmlFor="contact-message" className="sr-only">Message</label>
+                    <label htmlFor="contact-message" className="sr-only">
+                        Message
+                    </label>
                     <textarea
                         id="contact-message"
                         name="message"
@@ -93,9 +104,14 @@ const ContactForm = () => {
                         aria-describedby="contact-message-error"
                         onFocus={() => clearError('message')}
                     />
-                    <small id="contact-message-error" role="alert">{errors.message}</small>
+                    <small id="contact-message-error" role="alert">
+                        {errors.message}
+                    </small>
                 </div>
-                <button className="connect-section-form-button" aria-label="Submit completed form here">
+                <button
+                    className="connect-section-form-button"
+                    aria-label="Submit completed form here"
+                >
                     <img
                         className={`connect-section-form-button-arrow ${submitted ? 'active' : ''}`}
                         src={submitted ? greenArrow : arrow}

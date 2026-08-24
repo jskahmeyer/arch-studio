@@ -8,7 +8,9 @@
     color: $medium-gray;
     padding: 35px 0;
 
-    .navbar-logo { margin-right: 75px }
+    .navbar-logo {
+        margin-right: 75px;
+    }
 
     .navbar-links {
         width: 100%;
@@ -21,16 +23,20 @@
     &::before {
         content: '';
         position: absolute;
-        height: 70%; width: 1px;
+        height: 70%;
+        width: 1px;
         background-color: $light-gray;
-        top: 0px; bottom: 0; left: -4.5vw;
+        top: 0px;
+        bottom: 0;
+        left: -4.5vw;
 
         @media screen and (max-width: 540px) {
             display: none;
         }
     }
 
-    .navbar-links-mobile, .overlay {
+    .navbar-links-mobile,
+    .overlay {
         display: none;
     }
 
@@ -47,16 +53,22 @@
             border-radius: 50%;
 
             &:hover {
-                background-color: rgba(26, 29, 35, .6);
+                background-color: rgba(26, 29, 35, 0.6);
                 filter: invert(1);
             }
         }
 
-        .icon-menu { margin-right: 16px; }
+        .icon-menu {
+            margin-right: 16px;
+        }
 
         &.change {
-            .icon-close { display: block }
-            .icon-menu { display: none }
+            .icon-close {
+                display: block;
+            }
+            .icon-menu {
+                display: none;
+            }
         }
 
         @media screen and (max-width: 540px) {
@@ -70,35 +82,38 @@
             display: flex;
             transform: translateX(105%);
             position: absolute;
-            width: 100vw; height: 102vh;
-            left: -9vw; top: 100%;
-            background-color: rgba(26, 29, 35, .75);
+            width: 100vw;
+            height: 102vh;
+            left: -9vw;
+            top: 100%;
+            background-color: rgba(26, 29, 35, 0.75);
             z-index: 2;
-            transition: .55s;
+            transition: 0.55s;
             transition-delay: 450ms;
 
             &.active {
                 transform: translateX(0);
                 transition-delay: 0ms;
             }
-        }    
+        }
 
         .navbar-links-mobile {
             position: absolute;
             display: flex;
-            top: 100%; right: -9vw;
+            top: 100%;
+            right: -9vw;
             width: 91vw;
             padding: 60px 0 60px 40px;
             background-color: $very-light-gray;
             transform: translateY(calc(-100% - 115px));
-            transition: .70s ease-in-out;
+            transition: 0.7s ease-in-out;
             transition-delay: 450ms;
             z-index: 5;
-    
+
             ul {
                 flex-direction: column;
                 align-items: flex-start;
-                
+
                 li {
                     color: $dark-blue;
                     font-size: 16px;
@@ -106,7 +121,7 @@
                     letter-spacing: 1px;
                 }
             }
-    
+
             &.deployed {
                 transform: translateY(0);
                 transition-delay: 0ms;
@@ -121,7 +136,8 @@
     .page-directory {
         position: absolute;
         display: flex;
-        top: 0; left: -9vw;
+        top: 0;
+        left: -9vw;
         width: 9vw;
         color: $light-gray;
         transform: translateY(-100%);
@@ -140,7 +156,7 @@
         }
 
         @media screen and (max-width: 540px) {
-            display: none
+            display: none;
         }
     }
 }
@@ -149,7 +165,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 300px; 
+    max-width: 300px;
     font-weight: 700;
 
     .page-link {
@@ -163,8 +179,10 @@
                 &::after {
                     content: '';
                     position: absolute;
-                    left: 10%; bottom: -2px;
-                    height: 1px; width: 80%;
+                    left: 10%;
+                    bottom: -2px;
+                    height: 1px;
+                    width: 80%;
                     background: $dark-blue;
 
                     @media screen and (max-width: 540px) {
@@ -189,8 +207,10 @@
             &::after {
                 content: '';
                 position: absolute;
-                left: 10%; bottom: -2px;
-                height: 1px; width: 80%;
+                left: 10%;
+                bottom: -2px;
+                height: 1px;
+                width: 80%;
                 background: $dark-blue;
             }
         }

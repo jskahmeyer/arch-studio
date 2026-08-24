@@ -1,8 +1,17 @@
 import useViewport from '../../hooks/useViewport'
 
-const desktopImages = import.meta.glob<string>('../../assets/images/portfolio/desktop/*.jpg', { eager: true, import: 'default' })
-const tabletImages = import.meta.glob<string>('../../assets/images/portfolio/tablet/*.jpg', { eager: true, import: 'default' })
-const mobileImages = import.meta.glob<string>('../../assets/images/portfolio/mobile/*.jpg', { eager: true, import: 'default' })
+const desktopImages = import.meta.glob<string>('../../assets/images/portfolio/desktop/*.jpg', {
+    eager: true,
+    import: 'default',
+})
+const tabletImages = import.meta.glob<string>('../../assets/images/portfolio/tablet/*.jpg', {
+    eager: true,
+    import: 'default',
+})
+const mobileImages = import.meta.glob<string>('../../assets/images/portfolio/mobile/*.jpg', {
+    eager: true,
+    import: 'default',
+})
 
 interface PortfolioCardProps {
     item: {
@@ -23,8 +32,8 @@ const PortfolioCard = ({ item: { projectName, image, date } }: PortfolioCardProp
                     width >= 805
                         ? desktopImages[`../../assets/images/portfolio/desktop/${image}`]
                         : width >= 500
-                            ? tabletImages[`../../assets/images/portfolio/tablet/${image}`]
-                            : mobileImages[`../../assets/images/portfolio/mobile/${image}`]
+                          ? tabletImages[`../../assets/images/portfolio/tablet/${image}`]
+                          : mobileImages[`../../assets/images/portfolio/mobile/${image}`]
                 }
                 alt={projectName}
                 loading="lazy"

@@ -4,20 +4,29 @@ import arrow from '../../assets/images/icons/icon-arrow.svg'
 import heroSlides from '../../data/hero-slides.json'
 import useViewport from '../../hooks/useViewport'
 
-const desktopImages = import.meta.glob<string>('../../assets/images/home/desktop/*.jpg', { eager: true, import: 'default' })
-const tabletImages = import.meta.glob<string>('../../assets/images/home/tablet/*.jpg', { eager: true, import: 'default' })
-const mobileImages = import.meta.glob<string>('../../assets/images/home/mobile/*.jpg', { eager: true, import: 'default' })
+const desktopImages = import.meta.glob<string>('../../assets/images/home/desktop/*.jpg', {
+    eager: true,
+    import: 'default',
+})
+const tabletImages = import.meta.glob<string>('../../assets/images/home/tablet/*.jpg', {
+    eager: true,
+    import: 'default',
+})
+const mobileImages = import.meta.glob<string>('../../assets/images/home/mobile/*.jpg', {
+    eager: true,
+    import: 'default',
+})
 
-const ids = heroSlides.map(i => i.id)
-const backdrops = heroSlides.map(i => i.picture)
-const titles = heroSlides.map(i => i.title)
-const paragraphs = heroSlides.map(i => i.subheading)
+const ids = heroSlides.map((i) => i.id)
+const backdrops = heroSlides.map((i) => i.picture)
+const titles = heroSlides.map((i) => i.title)
+const paragraphs = heroSlides.map((i) => i.subheading)
 const lastIndex = heroSlides.length - 1
 
 const Hero = () => {
     const [current, setCurrent] = useState(0)
     const [isPaused, setIsPaused] = useState(
-        () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        () => window.matchMedia('(prefers-reduced-motion: reduce)').matches,
     )
     const { width } = useViewport()
 
@@ -31,7 +40,7 @@ const Hero = () => {
         if (isPaused) return
 
         const timeoutID = setTimeout(() => {
-            setCurrent(prev => (prev < lastIndex ? prev + 1 : 0))
+            setCurrent((prev) => (prev < lastIndex ? prev + 1 : 0))
         }, 6000)
 
         return () => clearTimeout(timeoutID)
@@ -60,22 +69,35 @@ const Hero = () => {
                     <button
                         className={`pagination-button ${i === current ? 'active' : ''}`}
                         onClick={() => setCurrent(i)}
-                        key={i}>
-                            {id}
+                        key={i}
+                    >
+                        {id}
                     </button>
                 ))}
                 <button
                     className="pagination-button pagination-toggle"
                     aria-label={isPaused ? 'Play slideshow' : 'Pause slideshow'}
                     aria-pressed={isPaused}
-                    onClick={() => setIsPaused(prev => !prev)}
+                    onClick={() => setIsPaused((prev) => !prev)}
                 >
                     {isPaused ? (
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                        >
                             <path d="M8 5v14l11-7z" />
                         </svg>
                     ) : (
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                        >
                             <rect x="6" y="4" width="4" height="16" />
                             <rect x="14" y="4" width="4" height="16" />
                         </svg>

@@ -5,7 +5,8 @@
     position: relative;
     background-color: $very-light-gray;
     color: $medium-gray;
-    height: 125px; width: calc(100% - 100px);
+    height: 125px;
+    width: calc(100% - 100px);
     margin-top: 150px;
 
     .logo-container {
@@ -15,13 +16,14 @@
 
         a {
             display: flex;
-            width: 125px; height: 125px;
-            
+            width: 125px;
+            height: 125px;
+
             img {
-                transform: scale(.75);
+                transform: scale(0.75);
                 margin: auto;
             }
-        }   
+        }
     }
 
     .footer-links {
@@ -33,12 +35,13 @@
 
     .footer-button {
         position: absolute;
-        right: -100px; top: 37.5px;
+        right: -100px;
+        top: 37.5px;
     }
 
     @media screen and (max-width: 960px) {
         left: -9vw;
-        width: calc(100% + 9vw); 
+        width: calc(100% + 9vw);
 
         .footer-button {
             right: -9vw;
@@ -49,14 +52,17 @@
         .footer-links {
             width: max-content;
             position: absolute;
-            bottom: 15px; left: calc(50vw - 40px);
-            
+            bottom: 15px;
+            left: calc(50vw - 40px);
+
             ul {
                 flex-direction: column;
-                
+
                 li {
                     margin-bottom: 20px;
-                    &:last-of-type { margin-bottom: 0 }
+                    &:last-of-type {
+                        margin-bottom: 0;
+                    }
                 }
             }
         }
@@ -74,7 +80,7 @@
             margin: -55px 0 0 0;
 
             a {
-                height: 110px; 
+                height: 110px;
                 width: 110px;
             }
         }
@@ -82,7 +88,8 @@
         .footer-links {
             position: relative;
             align-self: center;
-            bottom: auto; left: auto;
+            bottom: auto;
+            left: auto;
             margin: 35px 0;
 
             ul li {
@@ -96,8 +103,9 @@
         .footer-button {
             position: relative;
             justify-content: center;
-            top: auto; right: auto;
-            min-width: 100%; 
+            top: auto;
+            right: auto;
+            min-width: 100%;
             height: 60px !important;
         }
     }

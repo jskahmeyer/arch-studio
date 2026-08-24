@@ -8,10 +8,12 @@ import closeIcon from '../assets/images/icons/icon-close.svg'
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false)
     const location = useLocation()
+    const [prevPathname, setPrevPathname] = useState(location.pathname)
 
-    useEffect(() => {
+    if (location.pathname !== prevPathname) {
+        setPrevPathname(location.pathname)
         setMenuOpen(false)
-    }, [location.pathname])
+    }
 
     useEffect(() => {
         const overflow = menuOpen ? 'hidden' : ''
@@ -35,7 +37,7 @@ const Navbar = () => {
                 className={`navbar-mobile ${menuOpen ? 'change' : ''}`}
                 aria-label={menuOpen ? 'Close menu' : 'Open menu'}
                 aria-expanded={menuOpen}
-                onClick={() => setMenuOpen(prev => !prev)}
+                onClick={() => setMenuOpen((prev) => !prev)}
             >
                 <img className="icon-menu" src={hamburgerIcon} alt="" />
                 <img className="icon-close" src={closeIcon} alt="" />

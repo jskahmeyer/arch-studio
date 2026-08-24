@@ -24,7 +24,9 @@ describe('ContactForm', () => {
         await user.type(screen.getByLabelText('Message'), 'Hello there')
         await user.click(screen.getByRole('button', { name: /submit/i }))
 
-        expect(screen.getByLabelText('Email')).toHaveAccessibleDescription('Please use a valid email address')
+        expect(screen.getByLabelText('Email')).toHaveAccessibleDescription(
+            'Please use a valid email address',
+        )
     })
 
     it('clears a field error when it regains focus', async () => {

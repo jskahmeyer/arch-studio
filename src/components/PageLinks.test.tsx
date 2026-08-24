@@ -8,10 +8,13 @@ describe('PageLinks', () => {
         render(
             <MemoryRouter>
                 <PageLinks />
-            </MemoryRouter>
+            </MemoryRouter>,
         )
 
-        expect(screen.getByRole('link', { name: 'portfolio' })).toHaveAttribute('href', '/portfolio')
+        expect(screen.getByRole('link', { name: 'portfolio' })).toHaveAttribute(
+            'href',
+            '/portfolio',
+        )
         expect(screen.getByRole('link', { name: 'about Us' })).toHaveAttribute('href', '/about')
         expect(screen.getByRole('link', { name: 'contact' })).toHaveAttribute('href', '/contact')
     })
@@ -20,9 +23,12 @@ describe('PageLinks', () => {
         render(
             <MemoryRouter initialEntries={['/about']}>
                 <PageLinks />
-            </MemoryRouter>
+            </MemoryRouter>,
         )
 
-        expect(screen.getByRole('link', { name: 'about Us' })).toHaveAttribute('aria-current', 'page')
+        expect(screen.getByRole('link', { name: 'about Us' })).toHaveAttribute(
+            'aria-current',
+            'page',
+        )
     })
 })

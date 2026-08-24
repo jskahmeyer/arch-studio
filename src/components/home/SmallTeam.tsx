@@ -8,7 +8,9 @@ const SmallTeam = () => (
             <img src={smallTeamBackground} alt="" loading="lazy" />
         </div>
         <div className="text-container">
-            <h2 className="heading">Small team, <br /> big ideas</h2>
+            <h2 className="heading">
+                Small team, <br /> big ideas
+            </h2>
             <Link to="/about" className="button">
                 <span>About Us</span>
                 <img className="arrow" src={arrow} alt="Arrow to redirect to about page" />

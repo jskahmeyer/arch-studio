@@ -10,27 +10,35 @@
 
     .backdrop {
         position: absolute;
-        top: 0; bottom: 0; left: 0; right: 0;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
         z-index: -1;
 
         img {
-            filter: brightness(.75);
-            height: 100%; 
+            filter: brightness(0.75);
+            height: 100%;
             width: 100%;
 
             &.active-timer {
                 animation: flash 1200ms;
 
                 @keyframes flash {
-                    0% { opacity: .40 }
-                    100% { opacity: 1 }
+                    0% {
+                        opacity: 0.4;
+                    }
+                    100% {
+                        opacity: 1;
+                    }
                 }
             }
-        }  
+        }
     }
 
     .text-container {
-        max-width: 55%; height: 350px;
+        max-width: 55%;
+        height: 350px;
         margin: 150px;
 
         & > * {
@@ -51,7 +59,7 @@
         .subheading {
             margin: 20px 0 10px;
             height: 28%;
-        } 
+        }
     }
 
     .pagination {
@@ -64,13 +72,15 @@
             flex-shrink: 0;
             background-color: white;
             color: $medium-gray;
-            height: 60px; 
+            height: 60px;
             width: 60px;
             border: 0;
             font-family: inherit;
             font-weight: 700;
             cursor: pointer;
-            transition: background-color 1200ms, color 1200ms;
+            transition:
+                background-color 1200ms,
+                color 1200ms;
 
             &:hover {
                 background-color: $very-light-gray;
@@ -103,14 +113,15 @@
             left: -50px;
 
             .pagination-button {
-                height: 50px; width: 50px;
+                height: 50px;
+                width: 50px;
             }
         }
     }
 
     @media screen and (max-width: 755px) {
         margin-bottom: 150px;
-        
+
         .text-container {
             max-width: 80%;
             display: flex;
@@ -118,21 +129,22 @@
             margin: 80px auto 65px;
             justify-content: center;
 
-            .heading, .subheading {
+            .heading,
+            .subheading {
                 height: min-content;
             }
 
             .subheading {
                 margin: 30px 0;
             }
-        }  
+        }
     }
 
     @media screen and (max-width: 540px) {
         left: -9vw;
         width: calc(100% + 18vw);
         margin-bottom: 125px;
-    
+
         .text-container {
             height: 400px;
             margin: 60px auto;
@@ -163,7 +175,8 @@
         @media screen and (max-width: 965px) {
             display: flex;
             justify-content: center;
-            left: 50%; right: 50%;
+            left: 50%;
+            right: 50%;
             font-size: 17vw;
         }
     }
@@ -172,12 +185,13 @@
         display: flex;
         position: relative;
         align-items: center;
-        width: 70%; height: min-content;
+        width: 70%;
+        height: min-content;
 
         .content {
             width: 60%;
             margin: 35px auto 0;
-        
+
             .subheading {
                 margin-bottom: 30px;
 
@@ -212,12 +226,15 @@
         position: absolute;
         z-index: -1;
         width: 30%;
-        top: 0; bottom: 0; right: 0; 
+        top: 0;
+        bottom: 0;
+        right: 0;
 
         img {
             object-fit: cover;
             object-position: top right;
-            width: 100%; height: 100%;
+            width: 100%;
+            height: 100%;
         }
 
         @media screen and (max-width: 965px) {
@@ -237,12 +254,16 @@
 
     .backdrop {
         position: absolute;
-        filter: brightness(.6);
-        top: 0; bottom: 0; left: 0; right: 0;
+        filter: brightness(0.6);
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
         z-index: -1;
 
         img {
-            width: 100%; height: 100%;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
         }
     }
@@ -282,7 +303,7 @@
 
     .portfolio-link {
         position: absolute;
-        top: 0; 
+        top: 0;
         right: 0;
     }
 
@@ -298,7 +319,7 @@
 
             .image {
                 width: 100%;
-                filter: brightness(.65);
+                filter: brightness(0.65);
             }
 
             .number {
@@ -306,14 +327,16 @@
                 color: $very-light-gray;
                 font-weight: 500;
                 font-size: calc(100px + 5vw);
-                right: -5px; top: 15%;
-                opacity: .4;
-                transition: .25s;
+                right: -5px;
+                top: 15%;
+                opacity: 0.4;
+                transition: 0.25s;
             }
 
             .text-container {
                 position: absolute;
-                bottom: 7%; left: 20px;
+                bottom: 7%;
+                left: 20px;
                 color: white;
                 z-index: 2;
 
@@ -326,7 +349,7 @@
 
             &:hover {
                 .number {
-                    opacity: .8;
+                    opacity: 0.8;
                 }
             }
         }
@@ -351,13 +374,13 @@
 
     @media screen and (max-width: 540px) {
         margin-bottom: 220px;
-        
+
         .portfolio-link {
             display: flex;
-            top: 100%; 
+            top: 100%;
             bottom: 0;
-            width: 100%; 
-            transform: translateY(50%);           
+            width: 100%;
+            transform: translateY(50%);
             justify-content: center;
         }
     }

@@ -11,20 +11,21 @@
         position: relative;
 
         .background-image {
-            filter: brightness(.75);
+            filter: brightness(0.75);
             display: flex;
             width: 100%;
         }
 
         .text-container {
             position: absolute;
-            bottom: 25px; left: 15px;
+            bottom: 25px;
+            left: 15px;
             color: $very-light-gray;
         }
 
         &:hover {
-            box-shadow: 1px 1px 4px 1px rgba(26, 29, 35, .25);
-            filter: grayscale(.45);
+            box-shadow: 1px 1px 4px 1px rgba(26, 29, 35, 0.25);
+            filter: grayscale(0.45);
         }
     }
 

@@ -21,11 +21,14 @@ const LeaderCard = ({ name, title, image }: LeaderCardProps) => (
         <div className="image-container">
             <img className="image" src={image} alt={name} loading="lazy" />
             <div className="image-overlay">
-                <a href="#" aria-label="View on LinkedIn" onClick={e => e.preventDefault()}>
+                {/* Placeholder social links: this is a fictional portfolio project with no real profiles to link to. */}
+                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                <a href="#" aria-label="View on LinkedIn" onClick={(e) => e.preventDefault()}>
                     <div className="white" />
                     <LinkedInIcon />
                 </a>
-                <a href="#" aria-label="View on Twitter" onClick={e => e.preventDefault()}>
+                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                <a href="#" aria-label="View on Twitter" onClick={(e) => e.preventDefault()}>
                     <TwitterIcon />
                 </a>
             </div>

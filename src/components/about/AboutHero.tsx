@@ -1,7 +1,13 @@
 import useViewport from '../../hooks/useViewport'
 
-const desktopImages = import.meta.glob<string>('../../assets/images/about/desktop/*.jpg', { eager: true, import: 'default' })
-const mobileImages = import.meta.glob<string>('../../assets/images/about/mobile/*.jpg', { eager: true, import: 'default' })
+const desktopImages = import.meta.glob<string>('../../assets/images/about/desktop/*.jpg', {
+    eager: true,
+    import: 'default',
+})
+const mobileImages = import.meta.glob<string>('../../assets/images/about/mobile/*.jpg', {
+    eager: true,
+    import: 'default',
+})
 
 const AboutHero = () => {
     const { width } = useViewport()
@@ -27,7 +33,9 @@ const AboutHero = () => {
                 <hr className="line" />
                 <h2 className="subheading">Your team of professionals</h2>
                 <p className="content">
-                    Our small team of world-class professionals will work with you every step of the way. Strong relationships are at the core of everything we do. This extends to the relationship our projects have with their surroundings.
+                    Our small team of world-class professionals will work with you every step of the
+                    way. Strong relationships are at the core of everything we do. This extends to
+                    the relationship our projects have with their surroundings.
                 </p>
             </div>
         </div>

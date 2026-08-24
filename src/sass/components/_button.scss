@@ -5,11 +5,16 @@
     display: flex;
     align-items: center;
     padding: 0 20px;
-    height: 50px; width: max-content;
-    transition: .15s;
+    height: 50px;
+    width: max-content;
+    transition: 0.15s;
 
-    &:hover { background-color: $dark-gray }
-    &:active { background-color: $light-gray }
+    &:hover {
+        background-color: $dark-gray;
+    }
+    &:active {
+        background-color: $light-gray;
+    }
 
     span {
         margin-right: 15px;

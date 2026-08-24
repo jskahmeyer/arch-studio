@@ -9,10 +9,7 @@ const Portfolio = () => {
             </div>
             <div className="portfolio-cards-grid">
                 {portfolioItems.map((item) => (
-                    <PortfolioCard 
-                        item={item}
-                        key={item.id}
-                    />
+                    <PortfolioCard item={item} key={item.id} />
                 ))}
             </div>
         </div>

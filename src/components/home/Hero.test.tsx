@@ -9,7 +9,7 @@ const renderHero = () =>
     render(
         <MemoryRouter>
             <Hero />
-        </MemoryRouter>
+        </MemoryRouter>,
     )
 
 describe('Hero', () => {
@@ -63,7 +63,7 @@ describe('Hero', () => {
     })
 
     it('starts paused when the user prefers reduced motion', () => {
-        const matchMediaSpy = vi.spyOn(window, 'matchMedia').mockImplementation(query => ({
+        const matchMediaSpy = vi.spyOn(window, 'matchMedia').mockImplementation((query) => ({
             matches: query === '(prefers-reduced-motion: reduce)',
             media: query,
             onchange: null,

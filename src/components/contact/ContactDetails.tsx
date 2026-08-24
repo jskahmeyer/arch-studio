@@ -1,7 +1,6 @@
 import arrow from '../../assets/images/icons/icon-arrow-dark.svg'
 import LocationsMap from '../contact/LocationsMap'
 
-
 const ContactDetails = () => {
     return (
         <div className="contact-details">
@@ -58,7 +57,7 @@ const ContactDetails = () => {
                 </div>
             </div>
             <div className="map-container" id="map">
-                <LocationsMap/>
+                <LocationsMap />
             </div>
         </div>
     )
