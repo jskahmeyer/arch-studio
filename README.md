@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+# Arch Studio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A fictional architecture firm marketing site — a front-end build of the [Frontend Mentor "Architecture agency"](https://www.frontendmentor.io/) challenge, extended with client-side routing, an interactive map, and a responsive image pipeline.
 
-## Available Scripts
+## Stack
 
-In the project directory, you can run:
+- [React 19](https://react.dev/) + [React Router v6](https://reactrouter.com/)
+- [Vite 8](https://vitejs.dev/) for dev/build tooling
+- [TypeScript](https://www.typescriptlang.org/) (strict mode)
+- [Sass](https://sass-lang.com/) (`@use` module system)
+- [Leaflet](https://leafletjs.com/) / [react-leaflet](https://react-leaflet.js.org/) for the office locations map
 
-### `npm start`
+## Getting started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Requires Node (see `.nvmrc`).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+npm install
+npm run dev       # start the dev server
+npm run build     # type-check and produce a production build in dist/
+npm run preview   # serve the production build locally
+npm run type-check # run TypeScript with no emit
+```
 
-### `npm test`
+## Project structure
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+src/
+  components/   # feature components, grouped by page (home, about, contact, portfolio)
+  pages/        # route-level components
+  layout/       # Navbar, Footer
+  hooks/        # shared hooks (e.g. useViewport)
+  data/         # static JSON content (hero slides, portfolio items, leaders)
+  sass/         # base styles, components, and per-page partials, imported via App.scss
+  assets/       # images and icons, organized by page and breakpoint
+```
 
-### `npm run build`
+Responsive images are picked up per-breakpoint via `import.meta.glob` rather than a manual `<picture>`/`srcset` per component — see `src/components/home/Hero.tsx` for the pattern.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Notes
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- The Leaflet default marker icon is re-pointed at the bundled image assets in `src/components/contact/LocationsMap.tsx`, working around a [known issue](https://github.com/Leaflet/Leaflet/issues/4968) where Leaflet's icon URL resolution breaks under bundlers.
+- No backend — the contact form validates client-side only and does not submit anywhere.

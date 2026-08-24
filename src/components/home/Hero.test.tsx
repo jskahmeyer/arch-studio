@@ -1,0 +1,42 @@
+import { render, screen, act } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import { MemoryRouter } from 'react-router-dom'
+import { describe, it, expect, vi } from 'vitest'
+import Hero from './Hero'
+import heroSlides from '../../data/hero-slides.json'
+
+const renderHero = () =>
+    render(
+        <MemoryRouter>
+            <Hero />
+        </MemoryRouter>
+    )
+
+describe('Hero', () => {
+    it('renders the first slide heading by default', () => {
+        renderHero()
+
+        expect(screen.getByRole('heading', { name: heroSlides[0].title })).toBeInTheDocument()
+    })
+
+    it('switches slides when a pagination button is clicked', async () => {
+        const user = userEvent.setup()
+        renderHero()
+
+        await user.click(screen.getByRole('button', { name: String(heroSlides[2].id) }))
+
+        expect(screen.getByRole('heading', { name: heroSlides[2].title })).toBeInTheDocument()
+    })
+
+    it('auto-advances to the next slide after the timeout elapses', () => {
+        vi.useFakeTimers({ shouldAdvanceTime: true })
+        renderHero()
+
+        act(() => {
+            vi.advanceTimersByTime(6000)
+        })
+
+        expect(screen.getByRole('heading', { name: heroSlides[1].title })).toBeInTheDocument()
+        vi.useRealTimers()
+    })
+})
