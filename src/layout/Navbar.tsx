@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import PageLinks from '../components/PageLinks'
+import PageLinks from '../components/shared/PageLinks'
 import logo from '../assets/images/archLogo.svg'
 import hamburgerIcon from '../assets/images/icons/icon-hamburger.svg'
 import closeIcon from '../assets/images/icons/icon-close.svg'

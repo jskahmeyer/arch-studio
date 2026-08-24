@@ -1,18 +1,16 @@
+import Page from '../components/shared/Page'
 import Hero from '../components/home/Hero'
 import Welcome from '../components/home/Welcome'
 import SmallTeam from '../components/home/SmallTeam'
 import Featured from '../components/home/Featured'
 
 const Home = () => (
-    <div className="page">
-        <div className="page-directory">
-            <span>Home</span>
-        </div>
+    <Page label="Home">
         <Hero />
         <Welcome />
         <SmallTeam />
         <Featured />
-    </div>
+    </Page>
 )
 
 export default Home

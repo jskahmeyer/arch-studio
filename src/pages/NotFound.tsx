@@ -1,16 +1,12 @@
-import { Link } from 'react-router-dom'
+import Page from '../components/shared/Page'
+import ArrowLink from '../components/shared/ArrowLink'
 
 const NotFound = () => (
-    <div className="page not-found">
-        <div className="page-directory">
-            <span>Page Not Found</span>
-        </div>
+    <Page label="Page Not Found" className="not-found">
         <h1 className="not-found-heading">404</h1>
         <p className="not-found-text">We couldn't find the page you were looking for.</p>
-        <Link to="/" className="not-found-link button">
-            <span>Back to home</span>
-        </Link>
-    </div>
+        <ArrowLink to="/" label="Back to home" className="not-found-link" />
+    </Page>
 )
 
 export default NotFound

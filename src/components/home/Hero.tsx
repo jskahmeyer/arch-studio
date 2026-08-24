@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import arrow from '../../assets/images/icons/icon-arrow.svg'
+import ArrowLink from '../shared/ArrowLink'
 import heroSlides from '../../data/hero-slides.json'
 import useViewport from '../../hooks/useViewport'
 
@@ -59,10 +58,11 @@ const Hero = () => {
             <div className="text-container">
                 <h2 className="heading">{titles[current]}</h2>
                 <p className="subheading">{paragraphs[current]}</p>
-                <Link to="/portfolio" className="button">
-                    <span>See Our Portfolio</span>
-                    <img src={arrow} alt="Arrow to redirect to portfolio" />
-                </Link>
+                <ArrowLink
+                    to="/portfolio"
+                    label="See Our Portfolio"
+                    arrowAlt="Arrow to redirect to portfolio"
+                />
             </div>
             <div className="pagination">
                 {ids.map((id, i) => (

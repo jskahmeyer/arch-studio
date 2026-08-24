@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
-import PageLinks from '../components/PageLinks'
-import arrow from '../assets/images/icons/icon-arrow.svg'
+import PageLinks from '../components/shared/PageLinks'
+import ArrowLink from '../components/shared/ArrowLink'
 import footerLogo from '../assets/images/archLogoWhite.svg'
 
 const Footer = () => {
@@ -18,14 +18,13 @@ const Footer = () => {
                 <PageLinks />
             </div>
             {location.pathname !== '/portfolio' && (
-                <Link to="/portfolio" className="footer-button button">
-                    <span>See Our Portfolio</span>
-                    <img
-                        className="footer-button-arrow"
-                        src={arrow}
-                        alt="Arrow to redirect to portfolio"
-                    />
-                </Link>
+                <ArrowLink
+                    to="/portfolio"
+                    label="See Our Portfolio"
+                    arrowAlt="Arrow to redirect to portfolio"
+                    className="footer-button"
+                    arrowClassName="footer-button-arrow"
+                />
             )}
         </div>
     )

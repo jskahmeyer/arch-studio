@@ -1,6 +1,5 @@
-import { Link } from 'react-router-dom'
 import smallTeamBackground from '../../assets/images/home/desktop/image-small-team.jpg'
-import arrow from '../../assets/images/icons/icon-arrow.svg'
+import ArrowLink from '../shared/ArrowLink'
 
 const SmallTeam = () => (
     <div className="small-team">
@@ -11,10 +10,12 @@ const SmallTeam = () => (
             <h2 className="heading">
                 Small team, <br /> big ideas
             </h2>
-            <Link to="/about" className="button">
-                <span>About Us</span>
-                <img className="arrow" src={arrow} alt="Arrow to redirect to about page" />
-            </Link>
+            <ArrowLink
+                to="/about"
+                label="About Us"
+                arrowAlt="Arrow to redirect to about page"
+                arrowClassName="arrow"
+            />
         </div>
     </div>
 )

@@ -1,16 +1,14 @@
+import Page from '../components/shared/Page'
 import AboutHero from '../components/about/AboutHero'
 import OurHeritage from '../components/about/OurHeritage'
 import Leaders from '../components/about/Leaders'
 
 const About = () => (
-    <div className="page">
-        <div className="page-directory">
-            <span>About Us</span>
-        </div>
+    <Page label="About Us">
         <AboutHero />
         <OurHeritage />
         <Leaders />
-    </div>
+    </Page>
 )
 
 export default About
