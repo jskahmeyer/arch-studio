@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import useViewport from '../../hooks/useViewport'
 
 const desktopImages = import.meta.glob<string>('../../assets/images/portfolio/desktop/*.jpg', { eager: true, import: 'default' })
@@ -17,7 +16,7 @@ const PortfolioCard = ({ item: { projectName, image, date } }: PortfolioCardProp
     const { width } = useViewport()
 
     return (
-        <Link to="#" className="image-container">
+        <div className="image-container">
             <img
                 className="background-image"
                 src={
@@ -33,7 +32,7 @@ const PortfolioCard = ({ item: { projectName, image, date } }: PortfolioCardProp
                 <h4>{projectName}</h4>
                 <small>{date}</small>
             </div>
-        </Link>
+        </div>
     )
 }
 

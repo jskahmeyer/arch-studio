@@ -1,0 +1,19 @@
+@use '../base/colors' as *;
+
+.not-found {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding-top: 15vh;
+    padding-bottom: 15vh;
+
+    &-heading {
+        font-size: calc(2em + 2vw);
+        color: $dark-blue;
+    }
+
+    &-text {
+        max-width: 40ch;
+    }
+}
