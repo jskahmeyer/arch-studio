@@ -3,15 +3,15 @@ import ArrowLink from '../shared/ArrowLink'
 import heroSlides from '../../data/hero-slides.json'
 import useViewport from '../../hooks/useViewport'
 
-const desktopImages = import.meta.glob<string>('../../assets/images/home/desktop/*.jpg', {
+const desktopImages = import.meta.glob<string>('../../assets/images/home/desktop/*.webp', {
     eager: true,
     import: 'default',
 })
-const tabletImages = import.meta.glob<string>('../../assets/images/home/tablet/*.jpg', {
+const tabletImages = import.meta.glob<string>('../../assets/images/home/tablet/*.webp', {
     eager: true,
     import: 'default',
 })
-const mobileImages = import.meta.glob<string>('../../assets/images/home/mobile/*.jpg', {
+const mobileImages = import.meta.glob<string>('../../assets/images/home/mobile/*.webp', {
     eager: true,
     import: 'default',
 })

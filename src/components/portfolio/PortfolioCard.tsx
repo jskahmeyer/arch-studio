@@ -1,14 +1,14 @@
 import useViewport from '../../hooks/useViewport'
 
-const desktopImages = import.meta.glob<string>('../../assets/images/portfolio/desktop/*.jpg', {
+const desktopImages = import.meta.glob<string>('../../assets/images/portfolio/desktop/*.webp', {
     eager: true,
     import: 'default',
 })
-const tabletImages = import.meta.glob<string>('../../assets/images/portfolio/tablet/*.jpg', {
+const tabletImages = import.meta.glob<string>('../../assets/images/portfolio/tablet/*.webp', {
     eager: true,
     import: 'default',
 })
-const mobileImages = import.meta.glob<string>('../../assets/images/portfolio/mobile/*.jpg', {
+const mobileImages = import.meta.glob<string>('../../assets/images/portfolio/mobile/*.webp', {
     eager: true,
     import: 'default',
 })

@@ -1,4 +1,4 @@
-import skyscraper from '../../assets/images/home/desktop/image-welcome.jpg'
+import skyscraper from '../../assets/images/home/desktop/image-welcome.webp'
 
 const Welcome = () => (
     <div className="welcome">

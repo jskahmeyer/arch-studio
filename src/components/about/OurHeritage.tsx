@@ -1,4 +1,4 @@
-import heritage from '../../assets/images/about/desktop/image-heritage.jpg'
+import heritage from '../../assets/images/about/desktop/image-heritage.webp'
 
 const OurHeritage = () => (
     <div className="heritage">

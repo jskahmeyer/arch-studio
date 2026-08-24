@@ -1,17 +1,17 @@
 import useViewport from '../../hooks/useViewport'
 
-const desktopImages = import.meta.glob<string>('../../assets/images/contact/desktop/*.jpg', {
+const desktopImages = import.meta.glob<string>('../../assets/images/contact/desktop/*.webp', {
     eager: true,
     import: 'default',
 })
-const mobileImages = import.meta.glob<string>('../../assets/images/contact/mobile/*.jpg', {
+const mobileImages = import.meta.glob<string>('../../assets/images/contact/mobile/*.webp', {
     eager: true,
     import: 'default',
 })
 
 const ContactHero = () => {
     const { width } = useViewport()
-    const image = 'image-hero.jpg'
+    const image = 'image-hero.webp'
 
     return (
         <div className="contact-hero">

@@ -2,28 +2,28 @@
     {
         "id": 1,
         "projectName": "Seraph Station",
-        "image": "image-seraph.jpg",
+        "image": "image-seraph.webp",
         "date": "September 2019",
         "featured": false
     },
     {
         "id": 2,
         "projectName": "Eebox Building",
-        "image": "image-eebox.jpg",
+        "image": "image-eebox.webp",
         "date": "August 2017",
         "featured": false
     },
     {
         "id": 3,
         "projectName": "Federal II Tower",
-        "image": "image-federal.jpg",
+        "image": "image-federal.webp",
         "date": "March 2017",
         "featured": false
     },
     {
         "id": 4,
         "projectName": "Project Del Sol",
-        "image": "image-del-sol.jpg",
+        "image": "image-del-sol.webp",
         "date": "January 2016",
         "featured": true,
         "number": 1
@@ -31,7 +31,7 @@
     {
         "id": 5,
         "projectName": "Le Prototype",
-        "image": "image-prototype.jpg",
+        "image": "image-prototype.webp",
         "date": "October 2015",
         "featured": true,
         "number": 3
@@ -39,7 +39,7 @@
     {
         "id": 6,
         "projectName": "228B Tower",
-        "image": "image-228b.jpg",
+        "image": "image-228b.webp",
         "date": "April 2015",
         "featured": true,
         "number": 2
@@ -47,42 +47,42 @@
     {
         "id": 7,
         "projectName": "Grand Edelweiss Hotel",
-        "image": "image-edelweiss.jpg",
+        "image": "image-edelweiss.webp",
         "date": "December 2013",
         "featured": false
     },
     {
         "id": 8,
         "projectName": "Netcry Tower",
-        "image": "image-netcry.jpg",
+        "image": "image-netcry.webp",
         "date": "August 2012",
         "featured": false
     },
     {
         "id": 9,
         "projectName": "Hypers",
-        "image": "image-hypers.jpg",
+        "image": "image-hypers.webp",
         "date": "January 2012",
         "featured": false
     },
     {
         "id": 10,
         "projectName": "SXIV Tower",
-        "image": "image-sxiv.jpg",
+        "image": "image-sxiv.webp",
         "date": "March 2011",
         "featured": false
     },
     {
         "id": 11,
         "projectName": "Trinity Bank Tower",
-        "image": "image-trinity.jpg",
+        "image": "image-trinity.webp",
         "date": "September 2010",
         "featured": false
     },
     {
         "id": 12,
         "projectName": "Project Paramour",
-        "image": "image-paramour.jpg",
+        "image": "image-paramour.webp",
         "date": "February 2008",
         "featured": false
     }

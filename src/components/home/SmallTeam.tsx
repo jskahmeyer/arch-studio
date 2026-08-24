@@ -1,4 +1,4 @@
-import smallTeamBackground from '../../assets/images/home/desktop/image-small-team.jpg'
+import smallTeamBackground from '../../assets/images/home/desktop/image-small-team.webp'
 import ArrowLink from '../shared/ArrowLink'
 
 const SmallTeam = () => (
