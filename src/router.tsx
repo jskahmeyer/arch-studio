@@ -1,10 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom'
 import App from './App'
-import Home from './pages/Home'
-import About from './pages/About'
-import Contact from './pages/Contact'
-import Portfolio from './pages/Portfolio'
-import NotFound from './pages/NotFound'
 import RouteError from './pages/RouteError'
 
 const router = createBrowserRouter([
@@ -13,11 +8,26 @@ const router = createBrowserRouter([
         element: <App />,
         errorElement: <RouteError />,
         children: [
-            { index: true, element: <Home /> },
-            { path: 'about', element: <About /> },
-            { path: 'portfolio', element: <Portfolio /> },
-            { path: 'contact', element: <Contact /> },
-            { path: '*', element: <NotFound /> },
+            {
+                index: true,
+                lazy: () => import('./pages/Home').then((m) => ({ Component: m.default })),
+            },
+            {
+                path: 'about',
+                lazy: () => import('./pages/About').then((m) => ({ Component: m.default })),
+            },
+            {
+                path: 'portfolio',
+                lazy: () => import('./pages/Portfolio').then((m) => ({ Component: m.default })),
+            },
+            {
+                path: 'contact',
+                lazy: () => import('./pages/Contact').then((m) => ({ Component: m.default })),
+            },
+            {
+                path: '*',
+                lazy: () => import('./pages/NotFound').then((m) => ({ Component: m.default })),
+            },
         ],
     },
 ])
