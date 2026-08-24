@@ -56,10 +56,12 @@
 
     .pagination {
         position: absolute;
-        bottom: 0; 
+        display: flex;
+        bottom: 0;
         left: -60px;
 
         .pagination-button {
+            flex-shrink: 0;
             background-color: white;
             color: $medium-gray;
             height: 60px; 
@@ -78,6 +80,12 @@
                 background-color: $dark-blue;
                 color: white;
             }
+        }
+
+        .pagination-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         @media screen and (max-width: 755px) {

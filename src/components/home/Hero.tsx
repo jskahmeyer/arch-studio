@@ -16,6 +16,9 @@ const lastIndex = heroSlides.length - 1
 
 const Hero = () => {
     const [current, setCurrent] = useState(0)
+    const [isPaused, setIsPaused] = useState(
+        () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    )
     const { width } = useViewport()
 
     const getImage = (filename: string) => {
@@ -25,12 +28,14 @@ const Hero = () => {
     }
 
     useEffect(() => {
+        if (isPaused) return
+
         const timeoutID = setTimeout(() => {
             setCurrent(prev => (prev < lastIndex ? prev + 1 : 0))
         }, 6000)
 
         return () => clearTimeout(timeoutID)
-    }, [current])
+    }, [current, isPaused])
 
     return (
         <div className="homepage-hero">
@@ -59,6 +64,23 @@ const Hero = () => {
                             {id}
                     </button>
                 ))}
+                <button
+                    className="pagination-button pagination-toggle"
+                    aria-label={isPaused ? 'Play slideshow' : 'Pause slideshow'}
+                    aria-pressed={isPaused}
+                    onClick={() => setIsPaused(prev => !prev)}
+                >
+                    {isPaused ? (
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    ) : (
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <rect x="6" y="4" width="4" height="16" />
+                            <rect x="14" y="4" width="4" height="16" />
+                        </svg>
+                    )}
+                </button>
             </div>
         </div>
     )

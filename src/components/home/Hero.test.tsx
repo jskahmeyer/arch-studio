@@ -39,4 +39,44 @@ describe('Hero', () => {
         expect(screen.getByRole('heading', { name: heroSlides[1].title })).toBeInTheDocument()
         vi.useRealTimers()
     })
+
+    it('stops auto-advancing once paused, and resumes when unpaused', async () => {
+        vi.useFakeTimers({ shouldAdvanceTime: true })
+        const user = userEvent.setup()
+        renderHero()
+
+        await user.click(screen.getByRole('button', { name: 'Pause slideshow' }))
+
+        act(() => {
+            vi.advanceTimersByTime(10000)
+        })
+        expect(screen.getByRole('heading', { name: heroSlides[0].title })).toBeInTheDocument()
+
+        await user.click(screen.getByRole('button', { name: 'Play slideshow' }))
+
+        act(() => {
+            vi.advanceTimersByTime(6000)
+        })
+        expect(screen.getByRole('heading', { name: heroSlides[1].title })).toBeInTheDocument()
+
+        vi.useRealTimers()
+    })
+
+    it('starts paused when the user prefers reduced motion', () => {
+        const matchMediaSpy = vi.spyOn(window, 'matchMedia').mockImplementation(query => ({
+            matches: query === '(prefers-reduced-motion: reduce)',
+            media: query,
+            onchange: null,
+            addListener: () => {},
+            removeListener: () => {},
+            addEventListener: () => {},
+            removeEventListener: () => {},
+            dispatchEvent: () => false,
+        }))
+
+        renderHero()
+
+        expect(screen.getByRole('button', { name: 'Play slideshow' })).toBeInTheDocument()
+        matchMediaSpy.mockRestore()
+    })
 })
