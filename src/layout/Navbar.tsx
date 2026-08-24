@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import PageLinks from '../components/shared/PageLinks'
 import logo from '../assets/images/archLogo.svg'
@@ -9,6 +9,7 @@ const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false)
     const location = useLocation()
     const [prevPathname, setPrevPathname] = useState(location.pathname)
+    const menuToggleRef = useRef<HTMLButtonElement>(null)
 
     if (location.pathname !== prevPathname) {
         setPrevPathname(location.pathname)
@@ -25,6 +26,19 @@ const Navbar = () => {
         }
     }, [menuOpen])
 
+    useEffect(() => {
+        if (!menuOpen) return
+
+        const closeOnEscape = (e: KeyboardEvent) => {
+            if (e.key !== 'Escape') return
+            setMenuOpen(false)
+            menuToggleRef.current?.focus()
+        }
+
+        document.addEventListener('keydown', closeOnEscape)
+        return () => document.removeEventListener('keydown', closeOnEscape)
+    }, [menuOpen])
+
     return (
         <div className="navbar">
             <Link to="/">
@@ -34,6 +48,7 @@ const Navbar = () => {
                 <PageLinks />
             </div>
             <button
+                ref={menuToggleRef}
                 className={`navbar-mobile ${menuOpen ? 'change' : ''}`}
                 aria-label={menuOpen ? 'Close menu' : 'Open menu'}
                 aria-expanded={menuOpen}
@@ -45,7 +60,12 @@ const Navbar = () => {
             <div className={`navbar-links-mobile ${menuOpen ? 'deployed' : ''}`}>
                 <PageLinks />
             </div>
-            <div className={`overlay ${menuOpen ? 'active' : ''}`} />
+            {/* Decorative click-to-dismiss backdrop; keyboard users can already close the menu with Escape. */}
+            <div
+                className={`overlay ${menuOpen ? 'active' : ''}`}
+                aria-hidden="true"
+                onClick={() => setMenuOpen(false)}
+            />
         </div>
     )
 }

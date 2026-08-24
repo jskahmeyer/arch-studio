@@ -5,11 +5,13 @@ import About from './pages/About'
 import Contact from './pages/Contact'
 import Portfolio from './pages/Portfolio'
 import NotFound from './pages/NotFound'
+import RouteError from './pages/RouteError'
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <App />,
+        errorElement: <RouteError />,
         children: [
             { index: true, element: <Home /> },
             { path: 'about', element: <About /> },

@@ -32,4 +32,39 @@ describe('Navbar', () => {
 
         expect(screen.getByRole('button', { name: 'Open menu' })).toBeInTheDocument()
     })
+
+    it('closes the mobile menu when the backdrop is clicked', async () => {
+        const user = userEvent.setup()
+        const { container } = render(
+            <MemoryRouter>
+                <Navbar />
+            </MemoryRouter>,
+        )
+
+        await user.click(screen.getByRole('button', { name: 'Open menu' }))
+        expect(screen.getByRole('button', { name: 'Close menu' })).toBeInTheDocument()
+
+        await user.click(container.querySelector('.overlay')!)
+
+        expect(screen.getByRole('button', { name: 'Open menu' })).toBeInTheDocument()
+    })
+
+    it('closes the mobile menu on Escape and returns focus to the toggle button', async () => {
+        const user = userEvent.setup()
+        render(
+            <MemoryRouter>
+                <Navbar />
+            </MemoryRouter>,
+        )
+
+        const toggle = screen.getByRole('button', { name: 'Open menu' })
+        await user.click(toggle)
+        expect(screen.getByRole('button', { name: 'Close menu' })).toBeInTheDocument()
+
+        await user.keyboard('{Escape}')
+
+        const reopenedToggle = screen.getByRole('button', { name: 'Open menu' })
+        expect(reopenedToggle).toBeInTheDocument()
+        expect(reopenedToggle).toHaveFocus()
+    })
 })
