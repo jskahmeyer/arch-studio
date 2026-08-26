@@ -33,7 +33,6 @@ const ContactHero = () => {
                     alt="Close-up of a vintage black rotary telephone"
                 />
                 <div className="void" />
-                <hr className="line" />
             </div>
             <div className="text-container">
                 <h1 className="heading">Contact</h1>

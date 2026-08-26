@@ -21,6 +21,11 @@
             bottom: 25px;
             left: 15px;
             color: $very-light-gray;
+
+            h2 {
+                font-size: 1em;
+                font-weight: 700;
+            }
         }
 
         &:hover {

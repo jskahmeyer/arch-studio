@@ -48,9 +48,11 @@ const FeaturedPortfolioCards = () => {
                         }
                         alt={projectName}
                     />
-                    <h1 className="number">{number}</h1>
+                    <span className="number" aria-hidden="true">
+                        {number}
+                    </span>
                     <div className="text-container">
-                        <h5 className="heading">{projectName}</h5>
+                        <h3 className="heading">{projectName}</h3>
                         <small className="subheading">View All Projects</small>
                     </div>
                 </Link>

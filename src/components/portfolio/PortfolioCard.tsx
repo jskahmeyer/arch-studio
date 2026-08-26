@@ -49,7 +49,7 @@ const PortfolioCard = ({ item: { projectName, image, date } }: PortfolioCardProp
                 loading="lazy"
             />
             <div className="text-container">
-                <h4>{projectName}</h4>
+                <h2>{projectName}</h2>
                 <small>{date}</small>
             </div>
         </div>

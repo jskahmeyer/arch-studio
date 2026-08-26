@@ -33,7 +33,6 @@ const AboutHero = () => {
                     alt="Overhead view of hands typing on a laptop showing architectural blueprints, surrounded by printed floor plans"
                 />
                 <div className="void" />
-                <hr className="about-hero-image-container-line" />
             </div>
             <div className="text-container">
                 <h1 className="heading">About</h1>

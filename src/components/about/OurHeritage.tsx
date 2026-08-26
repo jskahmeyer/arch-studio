@@ -4,7 +4,11 @@ const OurHeritage = () => (
     <div className="heritage">
         <div className="text-container">
             <hr className="line" />
-            <h2 className="heading">Our Heritage</h2>
+            <h2 className="heading">
+                Our
+                <br />
+                Heritage
+            </h2>
             <div className="subheading">
                 <p>
                     Founded in 2007, we started as a trio of architects. Our complementary skills

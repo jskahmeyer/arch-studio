@@ -20,6 +20,7 @@
             filter: brightness(0.75);
             height: 100%;
             width: 100%;
+            object-fit: cover;
 
             &.active-timer {
                 animation: flash 1200ms;
